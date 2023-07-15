@@ -4,58 +4,60 @@
 
 int moves;
 
-int main() {
+int main()
+{
     int word1, word2, type1, type2;
     int oldob, oldobj;
 
-    ini();                                /* initiate data base */
+    ini(); /* initiate data base */
 
-    for(;;) {
-        events();                          /* случайные события */
-        getans(&word1,&word2,&type1,&type2);
+    for (;;) {
+        events(); /* случайные события */
+        getans(&word1, &word2, &type1, &type2);
         ++moves;
-        oldob=0;
+        oldob = 0;
 
-        if(        type1 == specwr ) {      /* спец-слово */
+        if (type1 == specwr) { /* спец-слово */
             rspeak(word1);
-        } else if( type2 == specwr ) {
+        } else if (type2 == specwr) {
             rspeak(word2);
 
-        } else if( type1 == movewr ) {      /* передвижения */
+        } else if (type1 == movewr) { /* передвижения */
             motion(word1);
 
-        } else if( type2 == movewr ) {
+        } else if (type2 == movewr) {
             motion(word2);
         } else {
-
-            if( type1 == objcwr ) {            /* об"ekta het рядом */
-                if( !here(word1) )  goto L10;
+            if (type1 == objcwr) { /* объекта нет рядом */
+                if (!here(word1))
+                    goto L10;
             }
-            if( type2 == objcwr ) {
-                if( !here(word2) ) {
-L10   :             rspeak(203);
+            if (type2 == objcwr) {
+                if (!here(word2)) {
+                L10:
+                    rspeak(203);
                     goto L20;
                 }
             }
 
-            if( type1 == actnwr ) {           /* действие + */
-                if( type2 == objcwr ) {         /*     + об"ekt */
-                    action(word1,word2);
-                } else if( oldobj != 0 ) {        /*     + старый об"ekt */
-                    action(word1,oldobj);
-                } else {                          /*     + het об"ekta */
-                    action(word1,255);
+            if (type1 == actnwr) {     /* действие + */
+                if (type2 == objcwr) { /* + объект */
+                    action(word1, word2);
+                } else if (oldobj != 0) { /* + старый объект */
+                    action(word1, oldobj);
+                } else { /* + нет объекта */
+                    action(word1, 255);
                 }
-            } else if( type2 == actnwr ) {      /* об"ekt + действие */
-                action(word2,word1);
+            } else if (type2 == actnwr) { /* объект + действие */
+                action(word2, word1);
 
-            } else if( type1 == objcwr ) {      /* об"ekt */
-                rspeak(90);                     /*    что делать c ? */
-                oldob=word1;
+            } else if (type1 == objcwr) { /* объект */
+                rspeak(90);               /* что делать c ? */
+                oldob = word1;
             }
-L20:;
+        L20:;
         }
-        oldobj=oldob;
+        oldobj = oldob;
     }
     return 0;
 }

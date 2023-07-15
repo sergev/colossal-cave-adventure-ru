@@ -2,9 +2,10 @@
 
 #include <stdlib.h>
 
-int pct(int n) {
+int pct(int n)
+{
     int r;
 
-    r = (rand()>>2) & 037777;
-    return( (r%100) < n );
+    r = (rand() >> 2) & 037777;
+    return ((r % 100) < n);
 }

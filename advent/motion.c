@@ -1,28 +1,33 @@
 /*d* === motion + action ===           07.01.85   version   13 */
-/* передвижения или действия b otbet ha слова */
+/* передвижения или действия в ответ на слова */
 /* inp: verb   - глагол движения или действия */
-/*      object - об'ekt (если het to =0) */
+/*      object - объект (если нет то =0) */
 
 #include "advexter.h"
 
-void action(int verb, int object) {
+void action(int verb, int object)
+{
     int kk;
 
-    kk=actkey(verb);
-    if( kk==0 && verb!=1 )  fatal(/*102*/);
-    if( !act(kk,object) )  rspeak(12); /* kak применить слово? */
+    kk = actkey(verb);
+    if (kk == 0 && verb != 1)
+        fatal(/*102*/);
+    if (!act(kk, object))
+        rspeak(12); /* как применить слово? */
 }
 
-void motion(int verb) {
+void motion(int verb)
+{
     int kk;
 
-    kk=trvkey(loc);
-    if( kk==0 && loc!=1 )  fatal(/*103*/);
-    if( !act(kk,verb) ) {
-	if( pct(50) ) {
-	    rspeak(9);                /* пути het */
-	} else {
-	    rspeak(12);              /* kak применить это слово здесь? */
-	}
+    kk = trvkey(loc);
+    if (kk == 0 && loc != 1)
+        fatal(/*103*/);
+    if (!act(kk, verb)) {
+        if (pct(50)) {
+            rspeak(9); /* пути нет */
+        } else {
+            rspeak(12); /* как применить это слово здесь? */
+        }
     }
 }

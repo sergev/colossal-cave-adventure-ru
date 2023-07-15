@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "advexter.h"
 #include "cyrillic.h"
 
@@ -13,26 +14,32 @@ int yes(int x)
 beg:
     rspeak(x);
 
-    for(;;) {
-      fgets(s, sizeof(s), stdin);
-      trim(s);
+    for (;;) {
+        fgets(s, sizeof(s), stdin);
+        trim(s);
 
-      if(s[0]==0) goto quit;
+        if (s[0] == 0)
+            goto quit;
 
-      //TODO: get utf8 symbol
-      c=s[0];
+        // TODO: get utf8 symbol
+        c = s[0];
 
-      if( c == 'y' || c=='Y' || c==CYRILLIC_SMALL_LETTER_DE || c==CYRILLIC_CAPITAL_LETTER_DE ) {
-        x = 1;  break;
-      } else if( c == 'n' || c=='N' || c==CYRILLIC_SMALL_LETTER_EN || c==CYRILLIC_CAPITAL_LETTER_EN ) {
-        x = 0;  break;
-      } else {
-        rspeak(40);
-      }
+        if (c == 'y' || c == 'Y' || c == CYRILLIC_SMALL_LETTER_DE ||
+            c == CYRILLIC_CAPITAL_LETTER_DE) {
+            x = 1;
+            break;
+        } else if (c == 'n' || c == 'N' || c == CYRILLIC_SMALL_LETTER_EN ||
+                   c == CYRILLIC_CAPITAL_LETTER_EN) {
+            x = 0;
+            break;
+        } else {
+            rspeak(40);
+        }
     }
-    return( x );
+    return (x);
 
 quit:
-    if( x!=22  &&  yes(22) ) exit(0);
+    if (x != 22 && yes(22))
+        exit(0);
     goto beg;
 }

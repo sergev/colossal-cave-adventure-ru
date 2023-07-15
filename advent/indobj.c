@@ -3,31 +3,34 @@
 
 #include "advexter.h"
 
-void indobj() {
+void indobj()
+{
     int obj, kk, p;
-    if( !dark() ) {
-	for(obj=1; obj<=objt; ++obj) {
-	    if( ptext(obj)!=0 ) {
-		kk = prop(obj) & 0377;
-		if( kk==inipro )  kk=0;
-		kk=pstat(ptext(obj)+kk+1);
-		p=place(obj);
+    if (!dark()) {
+        for (obj = 1; obj <= objt; ++obj) {
+            if (ptext(obj) != 0) {
+                kk = prop(obj) & 0377;
+                if (kk == inipro)
+                    kk = 0;
+                kk = pstat(ptext(obj) + kk + 1);
+                p = place(obj);
 
-		if( p == loc ) {                 /* подвижный об"ekt */
-		    if( (prop(obj)&0377) == inipro ) { /* впервые увидел */
-			prop(obj)=0     /*        сокровище */;
-			tally=tally-1;
-		    }
-		    mes(kk);
+                if (p == loc) {                         /* подвижный объект */
+                    if ((prop(obj) & 0377) == inipro) { /* впервые увидел */
+                        prop(obj) = 0 /* сокровище */;
+                        tally = tally - 1;
+                    }
+                    mes(kk);
 
-		} else if( p < 0 ) {                      /* не -"- -"- */
-		    p = -p;
-		    while(fixed(p)!=0) {
-			if((fixed(p)&0377)==loc)  mes(kk);
-			p=p+1;
-		    }
-		}
-	    }
-	}
+                } else if (p < 0) { /* не -"- -"- */
+                    p = -p;
+                    while (fixed(p) != 0) {
+                        if ((fixed(p) & 0377) == loc)
+                            mes(kk);
+                        p = p + 1;
+                    }
+                }
+            }
+        }
     }
 }
