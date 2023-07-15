@@ -1,7 +1,7 @@
 /* INCLUDE-FILE ДЛЯ ГЕНЕРАТОРА БАЗЫ ДАННЫХ "ADVENTURE" */
 
 #include <stdio.h>
-#include "..\common\advcommo.h"
+#include "../common/advcommo.h"
 
 #define  inplen  81
 int      p;

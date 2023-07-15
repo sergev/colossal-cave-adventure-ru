@@ -1,6 +1,10 @@
-/* фатальная ошибка */
+/*
+ * фатальная ошибка
+ */
+#include <stdlib.h>
+#include <unistd.h>
 
-fatal()
+void fatal()
 {
     write(2, "FATAL ERROR\n", 12);
     exit(1);

@@ -1,7 +1,7 @@
 /* INCLUDE-FILE ДЛЯ ГЕНЕРАТОРА БАЗЫ ДАННЫХ "ADVENTURE" */
 
 #include <stdio.h>
-#include "..\common\advexter.h"
+#include "../common/advexter.h"
 
 #define  inplen  81
 extern int      p;

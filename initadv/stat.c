@@ -1,6 +1,6 @@
 /* ВЫДАЧА СТАТИСТИКИ ПО ИСПОЛЬЗОВАНИЮ СЛОВАРЯ И ДР. */
 
-#include "..\common\advexter.h"
+#include "../common/advexter.h"
 
 extern char mesused[];
 extern int mesimp;
