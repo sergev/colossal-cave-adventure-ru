@@ -14,7 +14,7 @@ clean:
 $(PROG):        $(OBJ)
 		$(CC) $(LDFLAGS) $(OBJ) -o $@
 ###
-fatal.o: fatal.c adv_ext.h ../common/advexter.h
+fatal.o: ../common/fatal.c adv_ext.h ../common/advexter.h
 getlin.o: getlin.c adv_ext.h ../common/advexter.h
 getobj.o: getobj.c adv_ext.h ../common/advexter.h
 iactio.o: iactio.c adv_ext.h ../common/advexter.h
