@@ -5,7 +5,7 @@
 
 void rspeak(int n)
 {
-    unsigned adr = rtext(n);
+    unsigned adr = RTEXT(n);
     if (!adr)
         fatal("missing text");
     mes(adr);

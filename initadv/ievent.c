@@ -14,13 +14,13 @@ void ievent()
         fatal("cannot open 'advevent'");
     printf("initial + events   :");
     while (getlin()) {
-        if (line(1) == 'i') {
+        if (LINE(1) == 'i') {
             tiniti = putcnd();
-        } else if (line(1) == 'e') {
+        } else if (LINE(1) == 'e') {
             tevent = putcnd();
             eevent = dpoint;
         } else {
-            printf("\n%s%.10s\n", "ошибка: ", &line(p));
+            printf("\n%s%.10s\n", "ошибка: ", &LINE(p));
             fatal(__func__);
         }
     }

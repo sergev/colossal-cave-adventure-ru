@@ -51,13 +51,13 @@ L4:
 
 L5:
     flag = 0 /* invent */;
-    for (obj = 1; obj <= objt; ++obj) {
-        if (place(obj) == caried) {
+    for (obj = 1; obj <= OBJT; ++obj) {
+        if (PLACE(obj) == CARIED) {
             if (flag == 0) {
                 rspeak(99);
                 flag = 1;
             }
-            mes(pstat(ptext(obj)));
+            mes(PSTAT(PTEXT(obj)));
         }
     }
     if (flag == 0)
@@ -66,10 +66,10 @@ L5:
 
 L6:
     drkfla = 0 /* look */;
-    if (abrev(loc) == 1)
+    if (ABREV(loc) == 1)
         rspeak(15);
     descr2();
-    abrev(loc) = 1;
+    ABREV(loc) = 1;
     goto L100;
 
 L7:

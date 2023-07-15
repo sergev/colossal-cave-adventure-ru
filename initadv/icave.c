@@ -8,10 +8,7 @@
 
 #include "adv_ext.h"
 
-char locused[loct];
-
-#define locdef 1
-#define locgo 2
+char locused[LOCT];
 
 void icave()
 {
@@ -21,29 +18,29 @@ void icave()
         fatal("cannot open 'advcave'");
     printf("cave locations     :");
     while (getlin()) {
-        if (line(1) == '+') {
+        if (LINE(1) == '+') {
             p = 3;
             lc = getobj();
             if (lc < 0) {
             L999:
-                printf("\n%s%.10s\n", "icave: ошибка: ", &line(p));
+                printf("\n%s%.10s\n", "icave: ошибка: ", &LINE(p));
                 fatal(__func__);
             }
             screen(lc);
-            if (locused[lc - 1] & locdef) {
+            if (locused[lc - 1] & LOCDEF) {
                 printf("\nпозиция %d уже определена\n", lc);
             }
-            locused[lc - 1] |= locdef;
-        } else if (line(1) == 's') {
-            stext(lc) = putmes();
-        } else if (line(1) == 'l') {
-            ltext(lc) = putmes();
-        } else if (line(1) == 't') {
-            trvkey(lc) = putcnd();
+            locused[lc - 1] |= LOCDEF;
+        } else if (LINE(1) == 's') {
+            STEXT(lc) = putmes();
+        } else if (LINE(1) == 'l') {
+            LTEXT(lc) = putmes();
+        } else if (LINE(1) == 't') {
+            TRVKEY(lc) = putcnd();
         } else {
             goto L999;
         }
     }
-    printf("%8d  %s %6d  %s\n", lc, "of", loct, "used");
+    printf("%8d  %s %6d  %s\n", lc, "of", LOCT, "used");
     fclose(F3);
 }

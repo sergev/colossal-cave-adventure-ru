@@ -5,17 +5,17 @@
 
 #include "advexter.h"
 
-#define blksiz 512
-#define mask (~(blksiz - 1l))
+#define BLKSIZ 512
+#define MASK (~(BLKSIZ - 1l))
 
 #define TEXT_LOCAL_FILENAME "text.adv"
 #define TEXT_SHARED_FILENAME "\advent\text.dat"
-#define empty '>'
+#define EMPTY '>'
 
 void mes(unsigned iadr)
 {
     static int cb = -1;
-    static char buf[blksiz + 1];
+    static char buf[BLKSIZ + 1];
     register char *ptr, *zeroptr;
     static long block = -1, nblock, adr;
 
@@ -27,25 +27,25 @@ void mes(unsigned iadr)
     }
 
     adr = (long)iadr * 2l;
-    nblock = adr & mask;
+    nblock = adr & MASK;
     if (block != nblock) {
         block = nblock;
         lseek(cb, block, 0);
-        read(cb, buf, blksiz);
+        read(cb, buf, BLKSIZ);
     }
 
-    ptr = &buf[(unsigned)(adr & (blksiz - 1l))];
+    ptr = &buf[(unsigned)(adr & (BLKSIZ - 1l))];
     if (!*ptr)
         ++ptr;
 
-    if (*ptr != empty) {
+    if (*ptr != EMPTY) {
         for (;;) {
             for (zeroptr = ptr; *zeroptr; ++zeroptr)
                 ;
             write(1, ptr, zeroptr - ptr);
-            if (zeroptr != &buf[blksiz])
+            if (zeroptr != &buf[BLKSIZ])
                 break;
-            read(cb, buf, blksiz);
+            read(cb, buf, BLKSIZ);
             ++block;
             ptr = buf;
         }

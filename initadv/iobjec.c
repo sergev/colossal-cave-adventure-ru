@@ -1,7 +1,7 @@
 /*d* === iobjec === read in cave description === 13.02.85   version   11 */
 
 /*  format: */
-/*     +  word(s) to name object */
+/*     +  WORD(s) to name object */
 /*     i  invent message (for movable objects) */
 /*     0,1.. object in various state */
 /*     s  initial state (in <>0) */
@@ -19,7 +19,7 @@ void iobjec()
         fatal("cannot open 'advobjec'");
     printf("objects description:");
     while (getlin()) {
-        mark = line(1);
+        mark = LINE(1);
         p = 4;
 
         if (mark == '+') { /* имена об"ektob */
@@ -30,12 +30,12 @@ void iobjec()
                     fatal(__func__);
                 }
                 nvoc = nvoc + 1;
-                ktab(nvoc) = object + (objcwr * 1000);
-                atab(nvoc) = *rword;
+                KTAB(nvoc) = object + (OBJCWR * 1000);
+                ATAB(nvoc) = *rword;
             }
             screen(object);
             if (treasr >= 1) {
-                prop(object) = (char)inipro;
+                PROP(object) = (char)INIPRO;
                 tally = tally + 1;
             }
 
@@ -44,43 +44,43 @@ void iobjec()
 
         } else if (mark == 'i') { /* сообщения o несомых */
             indstt = indstt + 1;
-            ptext(object) = indstt;
-            pstat(indstt) = putmes();
+            PTEXT(object) = indstt;
+            PSTAT(indstt) = putmes();
 
         } else if (mark >= '0' && mark <= '9') { /* o состояниях */
             indstt = indstt + 1;
-            pstat(indstt) = putmes();
+            PSTAT(indstt) = putmes();
 
         } else if (mark == 's') { /* начальное состояние */
-            prop(object) = getobj();
+            PROP(object) = getobj();
 
         } else if (mark == 'l') { /* начальная позиция: */
-            place(object) = getobj() /*   подвижного об"ekta */;
+            PLACE(object) = getobj() /*   подвижного об"ekta */;
 
         } else if (mark == 'f') { /*   фиксированного */
-            place(object) = -(indfix + 1);
+            PLACE(object) = -(indfix + 1);
             for (;;) {
                 posit = getobj();
                 if (!(posit >= 1))
                     break;
                 indfix = indfix + 1;
-                fixed(indfix) = posit;
+                FIXED(indfix) = posit;
             }
             indfix = indfix + 1;
-            fixed(indfix) = 0;
+            FIXED(indfix) = 0;
 
         } else {
-            printf("\n%s%.10s\n", "ошибка: ", &line(p));
+            printf("\n%s%.10s\n", "ошибка: ", &LINE(p));
             fatal(__func__);
         }
     }
-    printf("%8d  %s %6d  %s\n", object, "of", objt, "used");
+    printf("%8d  %s %6d  %s\n", object, "of", OBJT, "used");
 
     printf("fixed objects posit:");
-    printf("%8d  %s %6d  %s\n", indfix, "of", fixt, "used");
+    printf("%8d  %s %6d  %s\n", indfix, "of", FIXT, "used");
 
     printf("objects states     :");
-    printf("%8d  %s %6d  %s\n", indstt, "of", sttt, "used");
+    printf("%8d  %s %6d  %s\n", indstt, "of", STTT, "used");
 
     fclose(F3);
 }

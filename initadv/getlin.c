@@ -16,16 +16,16 @@ int getlin()
         for (p = 1; (c = getc(F3)) != EOF && c != '\n'; ++p) {
             if (c == '\t') {
                 while (p % 8)
-                    line(p++) = ' ';
+                    LINE(p++) = ' ';
                 c = ' ';
             }
-            line(p) = c;
+            LINE(p) = c;
         }
         if (c == EOF)
             goto L2;
-        for (; p <= inplen; ++p)
-            line(p) = ' ';
-    } while (line(1) == '*' || (line(1) == ' ' && line(4) == ' '));
+        for (; p <= INPLEN; ++p)
+            LINE(p) = ' ';
+    } while (LINE(1) == '*' || (LINE(1) == ' ' && LINE(4) == ' '));
     _getlin = 1;
     p = 1;
 L2:
@@ -34,7 +34,7 @@ L2:
 
 /* === getwrd === */
 /* get next word from line 'line', from position 'p' */
-/* return: true  - ok,  word is in 'word(4)', p - points to next */
+/* return: true  - ok,  word is in 'WORD(4)', p - points to next */
 /*         false - end of file */
 
 int getwrd()
@@ -45,14 +45,14 @@ int getwrd()
     if (scan()) {
         _getwrd = 1;
         for (i = 4; i--;)
-            word(i + 1) = ' ';
+            WORD(i + 1) = ' ';
         p0 = p - 1;
-        while (p <= inplen) {
-            ch = line(p);
+        while (p <= INPLEN) {
+            ch = LINE(p);
             if (!(ch != ' ' && ch != '=' && ch != ')'))
                 break;
             if (p - p0 <= 4)
-                word(p - p0) = line(p);
+                WORD(p - p0) = LINE(p);
             p = p + 1;
         }
     }
@@ -70,11 +70,11 @@ int scan()
 
 beg:
     _scan = 0;
-    while (p <= inplen && line(p) == ' ')
+    while (p <= INPLEN && LINE(p) == ' ')
         p = p + 1;
-    if (p <= inplen)
+    if (p <= INPLEN)
         _scan = 1;
-    if (line(p) == '\\') {
+    if (LINE(p) == '\\') {
         if (!getlin())
             return (0);
         goto beg;

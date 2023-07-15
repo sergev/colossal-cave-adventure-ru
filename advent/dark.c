@@ -17,20 +17,20 @@ int dark()
     }
     if (darkflag1) /*@VG*/
         return (darkflag1 = 0);
-    return (!at(light) && (!here(lamp) || prop(lamp) == 0));
+    return (!at(light) && (!here(lamp) || PROP(lamp) == 0));
 }
 
 int at(int object)
 {
     int _at, p;
-    p = place(object);
+    p = PLACE(object);
     _at = 0;
     if (p == loc) {
         _at = 1;
     } else if (p < 0) {
         p = -p;
-        while (fixed(p) != 0) {
-            if ((fixed(p) & 0377) == loc) {
+        while (FIXED(p) != 0) {
+            if ((FIXED(p) & 0377) == loc) {
                 _at = 1;
                 return (_at);
             }
@@ -42,5 +42,5 @@ int at(int object)
 
 int here(int object)
 {
-    return (place(object) == caried || at(object));
+    return (PLACE(object) == CARIED || at(object));
 }

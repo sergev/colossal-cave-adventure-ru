@@ -66,19 +66,19 @@ void loadcm()
 }
 
 int abb;               /* флаг: нужно ли полное описание */
-unsigned _rtext[ranm]; /* адреса разных сообщений */
-unsigned _ltext[loct]; /* - " -  длинных описаний позиции */
-unsigned _stext[loct]; /* - " -  коротких описаний позиции */
-unsigned _ctext[plcl]; /* - " -  квалификаций игрока */
-unsigned _cval[plcl];  /* пороги квалификации игрока */
-unsigned _ptext[objt]; /* индексы сообщений o свойствах объектов */
-unsigned _pstat[sttt]; /* индексы сообщений o свойствах объектов */
-char _abrev[loct];     /* флаги: надо сокращенное описание */
-unsigned _trvkey[loct]; /* таблица начала графа данной позиции */
-unsigned _actkey[actw]; /*  -"-    -"-  реакции нa действие */
+unsigned _rtext[RANM]; /* адреса разных сообщений */
+unsigned _ltext[LOCT]; /* - " -  длинных описаний позиции */
+unsigned _stext[LOCT]; /* - " -  коротких описаний позиции */
+unsigned _ctext[PLCL]; /* - " -  квалификаций игрока */
+unsigned _cval[PLCL];  /* пороги квалификации игрока */
+unsigned _ptext[OBJT]; /* индексы сообщений o свойствах объектов */
+unsigned _pstat[STTT]; /* индексы сообщений o свойствах объектов */
+char _abrev[LOCT];     /* флаги: надо сокращенное описание */
+unsigned _trvkey[LOCT]; /* таблица начала графа данной позиции */
+unsigned _actkey[ACTW]; /*  -"-    -"-  реакции нa действие */
 int nvoc;               /* число слов в словаре */
-int _ktab[vocw];        /* числа - значение слов */
-long _atab[vocw];       /* слова - по 4 буквы */
+int _ktab[VOCW];        /* числа - значение слов */
+long _atab[VOCW];       /* слова - по 4 буквы */
 int rndini;
 int loc;           /* текущая позиция */
 int tally;         /* число еще не обнаруженных сокровищ */
@@ -87,6 +87,6 @@ int rndini;        /* случайное число данной партии */
 unsigned tevent;   /* указатель таблицы случайных событий */
 unsigned eevent;   /* конец таблицы случайных событий */
 unsigned tiniti;   /* -"-  -"- инициализации */
-int _place[loct];  /* позиция объекта или -[индекс] */
-char _fixed[fixt]; /* для фиксированных объектов */
-char _prop[objt];  /* свойство объекта */
+int _place[LOCT];  /* позиция объекта или -[индекс] */
+char _fixed[FIXT]; /* для фиксированных объектов */
+char _prop[OBJT];  /* свойство объекта */

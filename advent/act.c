@@ -14,8 +14,8 @@ int actfla;
 
 int act(int indx, int object)
 {
-#define not 128
-#define isobj 64
+#define NOT 128
+#define ISOBJ 64
     int ntflag, condit, obimpl, cmnd, kod, obj, ncarry, i;
 
 begin:
@@ -32,10 +32,10 @@ L2000:
             if (cmnd == 0)
                 goto L5000; /*     условая выполнены */
 
-            kod = ((cmnd) % (isobj)) /*  загрузил код условия */;
-            ntflag = (cmnd / not != 0) /*  загрузил +/- флаг */;
+            kod = ((cmnd) % (ISOBJ)) /*  загрузил код условия */;
+            ntflag = (cmnd / NOT != 0) /*  загрузил +/- флаг */;
             obj = obimpl /* загрузил объект */;
-            if ((cmnd % not ) / isobj != 0)
+            if ((cmnd % NOT) / ISOBJ != 0)
                 obj = get();
 
             switch (kod) {
@@ -76,11 +76,11 @@ L2000:
             goto L100;
 
         L3:
-            condit = at(obj) || place(obj) == caried /* object is here */;
+            condit = at(obj) || PLACE(obj) == CARIED /* object is here */;
             goto L100;
 
         L4:
-            condit = place(obj) == caried /* we are toting object */;
+            condit = PLACE(obj) == CARIED /* we are toting object */;
             goto L100;
 
         L5:
@@ -88,11 +88,11 @@ L2000:
             goto L100;
 
         L6:
-            condit = (prop(obj) & 0377) == get() - 1 /* prop(obj)=n */;
+            condit = (PROP(obj) & 0377) == get() - 1 /* PROP(obj)=n */;
             goto L100;
 
         L7:
-            condit = place(obj) < 0 /* object is fixed */;
+            condit = PLACE(obj) < 0 /* object is fixed */;
             goto L100;
 
         L8:
@@ -109,8 +109,8 @@ L2000:
 
         L11:
             ncarry = 0 /* carry > obj objects */;
-            for (i = 1; i <= objt; ++i) {
-                if (place(i) == caried)
+            for (i = 1; i <= OBJT; ++i) {
+                if (PLACE(i) == CARIED)
                     ncarry = ncarry + 1;
             }
             condit = ncarry > obj;
@@ -147,9 +147,9 @@ L5000:
         cmnd = get();
         if (cmnd == 0)
             break;
-        kod = cmnd % isobj /*  загрузил код условия */;
+        kod = cmnd % ISOBJ /*  загрузил код условия */;
         obj = obimpl /*  загрузил обьект */;
-        if ((cmnd % not ) / isobj != 0)
+        if ((cmnd % NOT) / ISOBJ != 0)
             obj = get();
 
         switch (kod) {
@@ -181,26 +181,26 @@ L5000:
         fatal("bad action");
 
     L101:
-        place(obj) = loc /* drop object here */;
+        PLACE(obj) = loc /* drop object here */;
         goto L200;
 
     L102:
-        place(obj) = 0 /* destroy object */;
+        PLACE(obj) = 0 /* destroy object */;
         goto L200;
 
     L103:
-        place(obj) = caried /* carry object */;
+        PLACE(obj) = CARIED /* carry object */;
         goto L200;
 
     L104:
-        rspeak(obj); /* message #n (1<=n<256) */
+        rspeak(obj); /* message #n (1 <= n < 256) */
         goto L200;
     L105:
-        rspeak(obj + 255); /* message #n ( 256<=n ) */
+        rspeak(obj + 255); /* message #n (256 <= n) */
         goto L200;
 
     L106:
-        prop(obj) = get() - 1 /* let prop(obj)=n */;
+        PROP(obj) = get() - 1 /* let PROP(obj) = n */;
         goto L200;
 
     L107:
@@ -212,11 +212,11 @@ L5000:
         goto L200;
 
     L109:
-        place(obj) = get() - 1; /* throw to location #n */
+        PLACE(obj) = get() - 1; /* throw to location #n */
         goto L200;
 
     L110:
-        prop(obj) = prop(obj) + 1 /* add 1 to prop(obj) */;
+        PROP(obj) = PROP(obj) + 1 /* add 1 to PROP(obj) */;
         goto L200;
 
     L111:

@@ -19,10 +19,10 @@ void imessa()
         strncpy(buf, _line, 3);
         sscanf(buf, "%d", &nmes);
         screen(nmes);
-        if (rtext(nmes) != 0)
+        if (RTEXT(nmes) != 0)
             printf("\nсообщение %d уже определено\n", nmes);
-        rtext(nmes) = putmes();
+        RTEXT(nmes) = putmes();
     }
-    printf("%8d  %s %6d  %s\n", nmes, "of", ranm, "used");
+    printf("%8d  %s %6d  %s\n", nmes, "of", RANM, "used");
     fclose(F3);
 }

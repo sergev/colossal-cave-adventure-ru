@@ -9,13 +9,13 @@ void getans(int *word1, int *word2, int *type1, int *type2)
 {
     int work, kk;
     char _wrd1[10], _wrd2[10];
-#define wrd2(x) _wrd2[(x)-1]
-#define wrd1(x) _wrd1[(x)-1]
+#define WRD2(x) _wrd2[(x)-1]
+#define WRD1(x) _wrd1[(x)-1]
 
     for (;;) {
         inpans(_wrd1, _wrd2);
         *word1 = *word2 = *type1 = *type2 = -1;
-        if (wrd1(1) == '!' || wrd2(1) == '!')
+        if (WRD1(1) == '!' || WRD2(1) == '!')
             goto L100 /* спец-слова */;
 
         work = vocab(_wrd1);
@@ -32,7 +32,7 @@ void getans(int *word1, int *word2, int *type1, int *type2)
 
         if (*type1 >= 0)
             break;            /* bce слова неизвестны */
-        if (wrd1(1) == ' ') { /*     вообще het ни одного */
+        if (WRD1(1) == ' ') { /*     вообще het ни одного */
             kk = 61;
         } else {
         L100:

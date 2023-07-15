@@ -24,19 +24,19 @@ void ds(int n)
         rspeak(16);
     } else {
         kk = 0;
-        if (abrev(loc) != 0) {
-            kk = stext(loc);
+        if (ABREV(loc) != 0) {
+            kk = STEXT(loc);
         } else {
         L100:
-            kk = ltext(loc);
+            kk = LTEXT(loc);
         }
         if (kk == 0)
-            kk = ltext(loc);
+            kk = LTEXT(loc);
         mes(kk);
         if (abb != 0) {
-            abrev(loc) = 2;
+            ABREV(loc) = 2;
         } else {
-            abrev(loc) = (abrev(loc) + 1) % 4;
+            ABREV(loc) = (ABREV(loc) + 1) % 4;
         }
         indobj();
     }

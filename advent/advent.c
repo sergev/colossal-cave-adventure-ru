@@ -17,22 +17,22 @@ int main()
         ++moves;
         oldob = 0;
 
-        if (type1 == specwr) { /* спец-слово */
+        if (type1 == SPECWR) { /* спец-слово */
             rspeak(word1);
-        } else if (type2 == specwr) {
+        } else if (type2 == SPECWR) {
             rspeak(word2);
 
-        } else if (type1 == movewr) { /* передвижения */
+        } else if (type1 == MOVEWR) { /* передвижения */
             motion(word1);
 
-        } else if (type2 == movewr) {
+        } else if (type2 == MOVEWR) {
             motion(word2);
         } else {
-            if (type1 == objcwr) { /* объекта нет рядом */
+            if (type1 == OBJCWR) { /* объекта нет рядом */
                 if (!here(word1))
                     goto L10;
             }
-            if (type2 == objcwr) {
+            if (type2 == OBJCWR) {
                 if (!here(word2)) {
                 L10:
                     rspeak(203);
@@ -40,18 +40,18 @@ int main()
                 }
             }
 
-            if (type1 == actnwr) {     /* действие + */
-                if (type2 == objcwr) { /* + объект */
+            if (type1 == ACTNWR) {     /* действие + */
+                if (type2 == OBJCWR) { /* + объект */
                     action(word1, word2);
                 } else if (oldobj != 0) { /* + старый объект */
                     action(word1, oldobj);
                 } else { /* + нет объекта */
                     action(word1, 255);
                 }
-            } else if (type2 == actnwr) { /* объект + действие */
+            } else if (type2 == ACTNWR) { /* объект + действие */
                 action(word2, word1);
 
-            } else if (type1 == objcwr) { /* объект */
+            } else if (type1 == OBJCWR) { /* объект */
                 rspeak(90);               /* что делать c ? */
                 oldob = word1;
             }

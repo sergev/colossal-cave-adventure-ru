@@ -18,9 +18,9 @@ int putcnd()
     long f3pos;
 
     _putcnd = dpoint;
-    mrk0 = line(1);
+    mrk0 = LINE(1);
     do {
-        mrk = line(1);
+        mrk = LINE(1);
         if (mrk != mrk0)
             break;
         p = 2;
@@ -58,25 +58,21 @@ void outd(char bt)
 /* internal format is the same exept (+/-.bit) */
 
 int mesimp;
-char mesused[ranm];
-
-extern char locused[];
-#define locdef 1
-#define locgo 2
+char mesused[RANM];
 
 void condit()
 {
     static int mark, lp, nwords, kod, i, obj, number;
     static int _words[30];
-#define words(x) _words[(x)-1]
+#define WORDS(x) _words[(x)-1]
 
-#define not 128
-#define isobj 64
+#define NOT 128
+#define ISOBJ 64
 
-#define ncnd (sizeof _cndcod)
-#define nact (sizeof _actcod)
+#define NCND (sizeof _cndcod)
+#define NACT (sizeof _actcod)
 
-#define cndcod(x) _cndcod[(x)-1]
+#define CNDCOD(x) _cndcod[(x)-1]
     static char _cndcod[] = {
         /* === маркеры условий === */
         'o', /* об"ekt=заданному */
@@ -84,7 +80,7 @@ void condit()
         'h', /* here is object */
         't', /* is toting object */
         '%', /* with probability=obj% */
-        'p', /* prop(obj)=n */
+        'p', /* PROP(obj)=n */
         'f', /* object is fixed */
         '+', /* .true. */
         'y', /* reply is "yes" */
@@ -94,7 +90,7 @@ void condit()
         'w'  /* one of next words - последний маркер !! */
     };
 
-#define actcod(x) _actcod[(x)-1]
+#define ACTCOD(x) _actcod[(x)-1]
     static char _actcod[] = {
         /* === маркеры действий === */
         'd', /* drop object */
@@ -102,61 +98,61 @@ void condit()
         'c', /* carry object */
         'm', /* messane #n (  1 <= n < 256 ) */
         'm', /*    ...     (256 <= n < 512 ) */
-        'p', /* let prop(obj)=n */
+        'p', /* let PROP(obj)=n */
         'l', /* change location to #n */
         '#', /* special case #n */
         't', /* throw object to location #n */
-        'a', /* add 1 to prop(obj) */
+        'a', /* add 1 to PROP(obj) */
         'i', /* indicate objects at location */
         'n', /* смена объекта и повторный анализ */
         '"', /* message with address - послендний маркер !! */
     };
 
-    while (scan() && line(p) != '=') { /* анализ условий */
-        mark = line(p);
+    while (scan() && LINE(p) != '=') { /* анализ условий */
+        mark = LINE(p);
         p = p + 1; /* ... mapkep */
-        for (kod = 1; kod <= ncnd; ++kod) {
-            if (mark == cndcod(kod))
+        for (kod = 1; kod <= NCND; ++kod) {
+            if (mark == CNDCOD(kod))
                 goto L10;
         }
         goto L999;
     L10:
 
-        lp = line(p);
+        lp = LINE(p);
         p = p + 1 /* ... + / - */;
         if (lp == '-') {
-            kod = kod + not ;
+            kod = kod + NOT ;
         } else if (lp != '+') {
         L999:
-            printf("\n%s%.10s\n", "ошибка в условии: ", &line(p));
+            printf("\n%s%.10s\n", "ошибка в условии: ", &LINE(p));
             return;
         }
 
-        if (line(p) == '(') { /* many words (spec.case) */
+        if (LINE(p) == '(') { /* many words (spec.case) */
             p = p + 1;
             nwords = 0;
             for (;;) {
                 if (!scan())
                     goto L999;
-                if (line(p) == ')')
+                if (LINE(p) == ')')
                     break;
                 nwords = nwords + 1;
-                words(nwords) = getobj();
+                WORDS(nwords) = getobj();
             }
             p = p + 1;
             outd(kod + nwords);
             for (i = 1; i <= nwords; ++i)
-                outd(words(i));
+                outd(WORDS(i));
 
         } else { /* стандартное условие */
             obj = 0 /* ... об"ekt (если есть) */;
-            if (line(p) != ' ' && line(p) != '=') {
+            if (LINE(p) != ' ' && LINE(p) != '=') {
                 obj = getobj();
-                kod = kod + isobj;
+                kod = kod + ISOBJ;
             }
 
             number = 0 /* ... число (если есть) */;
-            if (line(p) == '=') {
+            if (LINE(p) == '=') {
                 p = p + 1;
                 number = getobj() + 1;
             }
@@ -174,10 +170,10 @@ void condit()
 
     p = p + 1;
     while (scan()) { /* анализ действий */
-        mark = line(p);
+        mark = LINE(p);
         p = p + 2 /* ... mapkep */;
-        for (kod = 1; kod <= nact; ++kod) {
-            if (mark == actcod(kod))
+        for (kod = 1; kod <= NACT; ++kod) {
+            if (mark == ACTCOD(kod))
                 goto L20;
         }
         goto L999;
@@ -186,20 +182,20 @@ void condit()
         if (mark == '"') { /* ... сообщение b след.ctp */
             if (!getlin())
                 goto L999;
-            obj = ranm - mesimp;
-            kod = 4 + isobj;
+            obj = RANM - mesimp;
+            kod = 4 + ISOBJ;
             mark = 'm';
-            rtext(obj) = putmes();
+            RTEXT(obj) = putmes();
             mesimp = mesimp + 1;
-            p = inplen + 1;
+            p = INPLEN + 1;
 
         } else {
-            if (line(p) != ' ' && line(p) != '=') { /* об"ekt */
+            if (LINE(p) != ' ' && LINE(p) != '=') { /* об"ekt */
                 obj = getobj();
-                kod = kod + isobj;
+                kod = kod + ISOBJ;
             }
 
-            if (line(p) == '=') { /* число */
+            if (LINE(p) == '=') { /* число */
                 p = p + 1;
                 number = getobj() + 1;
             }
@@ -208,7 +204,7 @@ void condit()
         if (mark == 'm')
             mesused[obj - 1] = 1;
         if (mark == 'l')
-            locused[obj - 1] |= locgo;
+            locused[obj - 1] |= LOCGO;
 
         if (mark == 'm' && obj >= 256) { /* спецслучай */
             ++kod;

@@ -7,25 +7,25 @@ void indobj()
 {
     int obj, kk, p;
     if (!dark()) {
-        for (obj = 1; obj <= objt; ++obj) {
-            if (ptext(obj) != 0) {
-                kk = prop(obj) & 0377;
-                if (kk == inipro)
+        for (obj = 1; obj <= OBJT; ++obj) {
+            if (PTEXT(obj) != 0) {
+                kk = PROP(obj) & 0377;
+                if (kk == INIPRO)
                     kk = 0;
-                kk = pstat(ptext(obj) + kk + 1);
-                p = place(obj);
+                kk = PSTAT(PTEXT(obj) + kk + 1);
+                p = PLACE(obj);
 
                 if (p == loc) {                         /* подвижный объект */
-                    if ((prop(obj) & 0377) == inipro) { /* впервые увидел */
-                        prop(obj) = 0 /* сокровище */;
+                    if ((PROP(obj) & 0377) == INIPRO) { /* впервые увидел */
+                        PROP(obj) = 0 /* сокровище */;
                         tally = tally - 1;
                     }
                     mes(kk);
 
                 } else if (p < 0) { /* не -"- -"- */
                     p = -p;
-                    while (fixed(p) != 0) {
-                        if ((fixed(p) & 0377) == loc)
+                    while (FIXED(p) != 0) {
+                        if ((FIXED(p) & 0377) == loc)
                             mes(kk);
                         p = p + 1;
                     }

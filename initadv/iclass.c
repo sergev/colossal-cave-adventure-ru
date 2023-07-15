@@ -19,9 +19,9 @@ void iclass()
         nmes = nmes + 1;
         screen(nmes);
         strncpy(buf, _line, 3);
-        sscanf(buf, "%d", &cval(nmes));
-        ctext(nmes) = putmes();
+        sscanf(buf, "%d", &CVAL(nmes));
+        CTEXT(nmes) = putmes();
     }
-    printf("%8d  %s %6d  %s\n", nmes, "of", plcl, "used");
+    printf("%8d  %s %6d  %s\n", nmes, "of", PLCL, "used");
     fclose(F3);
 }

@@ -22,7 +22,7 @@
 #include "adv_ext.h"
 
 int p;
-char _line[inplen], _word[4]; /* buffer: for input line */
+char _line[INPLEN], _word[4]; /* buffer: for input line */
 FILE *F3;
 FILE *F2;
 

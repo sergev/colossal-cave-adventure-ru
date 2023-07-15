@@ -16,31 +16,36 @@ static void _outt(char byte);
 int putmes()
 {
     static char _mrk[4], _mrk0[4];
-#define mrk0(x) _mrk0[(x)-1]
-#define mrk(x) _mrk[(x)-1]
+#define MRK0(x) _mrk0[(x)-1]
+#define MRK(x) _mrk[(x)-1]
+
     static unsigned _putmes;
     static int i, en;
     long f3pos;
 
     _putmes = outt / 2;
     for (i = 1; i <= 3; ++i)
-        mrk0(i) = line(i);
+        MRK0(i) = LINE(i);
     do {
         for (i = 1; i <= 3; ++i)
-            mrk(i) = line(i);
+            MRK(i) = LINE(i);
+
         if (strncmp(_mrk, _mrk0, 4))
             break;
-        for (en = inplen; en >= 4; --en) {
-            if (line(en) != ' ')
+
+        for (en = INPLEN; en >= 4; --en) {
+            if (LINE(en) != ' ')
                 goto L9;
         }
         en = 3;
     L9:
         for (i = 4; i <= en; ++i)
-            _outt(line(i));
+            _outt(LINE(i));
+
         _outt('\n');
         f3pos = ftell(F3);
     } while (getlin());
+
     fseek(F3, f3pos, 0);
     _outt(0);
 

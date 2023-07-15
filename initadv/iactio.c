@@ -14,7 +14,7 @@ void iactio()
         fatal("cannot open 'advactio'");
     printf("actions words      :");
     while (getlin()) {
-        if (line(1) == '+') {
+        if (LINE(1) == '+') {
             aw = aw + 1;
             p = 4 /* read list of words */;
             while (getwrd()) {
@@ -23,20 +23,20 @@ void iactio()
                     fatal(__func__);
                 }
                 nvoc = nvoc + 1;
-                ktab(nvoc) = aw + (actnwr * 1000);
-                atab(nvoc) = *rword;
+                KTAB(nvoc) = aw + (ACTNWR * 1000);
+                ATAB(nvoc) = *rword;
             }
             screen(aw);
 
-        } else if (line(1) == 'a') {
-            actkey(aw) = putcnd();
+        } else if (LINE(1) == 'a') {
+            ACTKEY(aw) = putcnd();
 
         } else {
-            printf("\n%s%.10s\n", "ошибка: ", &line(p));
+            printf("\n%s%.10s\n", "ошибка: ", &LINE(p));
             fatal(__func__);
         }
     }
-    printf("%8d  %s %6d  %s\n", aw, "of", actw, "used");
+    printf("%8d  %s %6d  %s\n", aw, "of", ACTW, "used");
 
     fclose(F3);
 }

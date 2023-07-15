@@ -2,21 +2,25 @@
 
 /* - parameters --- current limits: */
 
-/* === размеры массивов === */
-#define vocw 550        /* размер словаря */
-#define loct 254        /* locations */
-#define objt 127        /* objects */
-#define fixt 200        /* locations for fixed objects */
-#define sttt (objt * 2) /* different states of objects */
-#define actw 60         /* "action" verbs */
-#define ranm 400        /* random messages */
-#define plcl 12         /* different player classifications. */
+/*
+ * размеры массивов
+ */
+#define VOCW 550        /* размер словаря */
+#define LOCT 254        /* locations */
+#define OBJT 127        /* objects */
+#define FIXT 200        /* locations for fixed objects */
+#define STTT (OBJT * 2) /* different states of objects */
+#define ACTW 60         /* "action" verbs */
+#define RANM 400        /* random messages */
+#define PLCL 12         /* different player classifications */
 
-/* === типы слов === */
-#define movewr 0 /* направление движения */
-#define objcwr 1 /* объект */
-#define actnwr 2 /* действие с объектом */
-#define specwr 3 /* спец-слово */
+/*
+ * типы слов
+ */
+#define MOVEWR 0 /* направление движения */
+#define OBJCWR 1 /* объект */
+#define ACTNWR 2 /* действие с объектом */
+#define SPECWR 3 /* спец-слово */
 
 /* there are also limits which cannot be exceeded due to the structure */
 /* of the database. these upper limits are: */
@@ -26,42 +30,60 @@
 /*       511 random messages */
 /*       255 states of objects */
 
-/* --- messages --- */
+/*
+ * messages
+ */
 extern int abb;               /* флаг: нужно ли полное описание */
-extern unsigned _rtext[ranm]; /* адреса разных сообщений */
-#define rtext(x) _rtext[(x)-1]
-extern unsigned _ltext[loct]; /* - " -  длинных описаний позиции */
-#define ltext(x) _ltext[(x)-1]
-extern unsigned _stext[loct]; /* - " -  коротких описаний позиции */
-#define stext(x) _stext[(x)-1]
-extern unsigned _ctext[plcl]; /* - " -  квалификаций игрока */
-#define ctext(x) _ctext[(x)-1]
-extern unsigned _cval[plcl]; /* пороги квалификации игрока */
-#define cval(x) _cval[(x)-1]
-extern unsigned _ptext[objt]; /* индексы сообщений o свойствах объектов */
-#define ptext(x) _ptext[(x)-1]
-extern unsigned _pstat[sttt]; /* индексы сообщений o свойствах объектов */
-#define pstat(x) _pstat[(x)-1]
-extern char _abrev[loct]; /* флаги: надо сокращенное описание */
-#define abrev(x) _abrev[(x)-1]
 
-/* --- travels + actions --- */
-extern unsigned _trvkey[loct]; /* таблица начала графа данной позиции */
-#define trvkey(x) _trvkey[(x)-1]
-extern unsigned _actkey[actw]; /*  -"-    -"-  реакции нa действие */
-#define actkey(x) _actkey[(x)-1]
+extern unsigned _rtext[RANM]; /* адреса разных сообщений */
+#define RTEXT(x) _rtext[(x)-1]
 
-/* --- vocabulary --- */
+extern unsigned _ltext[LOCT]; /* - " -  длинных описаний позиции */
+#define LTEXT(x) _ltext[(x)-1]
+
+extern unsigned _stext[LOCT]; /* - " -  коротких описаний позиции */
+#define STEXT(x) _stext[(x)-1]
+
+extern unsigned _ctext[PLCL]; /* - " -  квалификаций игрока */
+#define CTEXT(x) _ctext[(x)-1]
+
+extern unsigned _cval[PLCL]; /* пороги квалификации игрока */
+#define CVAL(x) _cval[(x)-1]
+
+extern unsigned _ptext[OBJT]; /* индексы сообщений o свойствах объектов */
+#define PTEXT(x) _ptext[(x)-1]
+
+extern unsigned _pstat[STTT]; /* индексы сообщений o свойствах объектов */
+#define PSTAT(x) _pstat[(x)-1]
+
+extern char _abrev[LOCT]; /* флаги: надо сокращенное описание */
+#define ABREV(x) _abrev[(x)-1]
+
+/*
+ * travels + actions
+ */
+extern unsigned _trvkey[LOCT]; /* таблица начала графа данной позиции */
+#define TRVKEY(x) _trvkey[(x)-1]
+
+extern unsigned _actkey[ACTW]; /*  -"-    -"-  реакции нa действие */
+#define ACTKEY(x) _actkey[(x)-1]
+
+/*
+ * vocabulary
+ */
 extern int nvoc;        /* число слов в словаре */
-extern int _ktab[vocw]; /* числа - значение слов */
-#define ktab(x) _ktab[(x)-1]
-extern long _atab[vocw]; /* слова - по 4 буквы */
-#define atab(x) _atab[(x)-1]
 
-/* --- state --- */
-#define inipro 255  /* начальное состояние для сокровищ */
-#define nulobj 255  /* отсутствующий объект */
-#define caried 1000 /* маркер - объект несут */
+extern int _ktab[VOCW]; /* числа - значение слов */
+#define KTAB(x) _ktab[(x)-1]
+
+extern long _atab[VOCW]; /* слова - по 4 буквы */
+#define ATAB(x) _atab[(x)-1]
+
+/*
+ * state
+ */
+#define INIPRO 255  /* начальное состояние для сокровищ или отсутствующий объект */
+#define CARIED 1000 /* маркер - объект несут */
 
 extern int rndini;
 extern int loc;         /* текущая позиция */
@@ -72,22 +94,26 @@ extern unsigned tevent; /* указатель таблицы случайных 
 extern unsigned eevent; /* конец таблицы случайных событий */
 extern unsigned tiniti; /* -"-  -"- инициализации */
 
-extern int _place[loct]; /* позиция объекта или -[индекс] */
-#define place(x) _place[(x)-1]
+extern int _place[LOCT]; /* позиция объекта или -[индекс] */
+#define PLACE(x) _place[(x)-1]
 
-extern char _fixed[fixt]; /* для фиксированных объектов */
-#define fixed(x) _fixed[(x)-1]
+extern char _fixed[FIXT]; /* для фиксированных объектов */
+#define FIXED(x) _fixed[(x)-1]
 
-extern char _prop[objt]; /* свойство объекта */
-#define prop(x) _prop[(x)-1]
+extern char _prop[OBJT]; /* свойство объекта */
+#define PROP(x) _prop[(x)-1]
 
-/* From common directory. */
+/*
+ * From common directory.
+ */
 void fatal(const char *message);
 int vocab(char *word);
 void savecm(void);
 void loadcm(void);
 
-/* From advent directory. */
+/*
+ * From advent directory.
+ */
 void iniget(unsigned adr);
 int get(void);
 int at(int object);

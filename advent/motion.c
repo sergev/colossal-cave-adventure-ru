@@ -9,7 +9,7 @@ void action(int verb, int object)
 {
     int kk;
 
-    kk = actkey(verb);
+    kk = ACTKEY(verb);
     if (kk == 0 && verb != 1)
         fatal("bad action");
     if (!act(kk, object))
@@ -20,7 +20,7 @@ void motion(int verb)
 {
     int kk;
 
-    kk = trvkey(loc);
+    kk = TRVKEY(loc);
     if (kk == 0 && loc != 1)
         fatal("bad motion");
     if (!act(kk, verb)) {

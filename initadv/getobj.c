@@ -1,9 +1,9 @@
 /*  === getobj === input of object */
-/* inp: line(p) - beginning of word in form: */
+/* inp: LINE(p) - beginning of word in form: */
 /*                bird - object name */
 /*                **** - zero object (kod 255) */
 /*                123  - object #123 */
-/* out: getobj = object number, line(p) - next symbol after object */
+/* out: getobj = object number, LINE(p) - next symbol after object */
 /*             = -1 - no more words */
 
 #include <string.h>
@@ -16,10 +16,10 @@ int getobj()
     int _getobj;
 
     if (getwrd()) {
-        if (word(1) >= '0' && word(1) <= '9') { /* число */
+        if (WORD(1) >= '0' && WORD(1) <= '9') { /* число */
             strncpy(buf, _word, 4);
             sscanf(buf, "%d", &_getobj);
-        } else if (word(1) == '*') { /* **** */
+        } else if (WORD(1) == '*') { /* **** */
             _getobj = 255;
         } else { /* bird */
             _getobj = vocab(_word);

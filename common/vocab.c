@@ -14,10 +14,10 @@ int vocab(char *word)
 
     i = 1;
     for (;;) {
-        _vocab = ktab(i);
+        _vocab = KTAB(i);
         if (_vocab == 0)
             break;
-        if (!strncmp((const char *)&atab(i), word, 4))
+        if (!strncmp((const char *)&ATAB(i), word, 4))
             return (_vocab);
         i = i + 1;
     }
