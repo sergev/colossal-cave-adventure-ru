@@ -1,5 +1,5 @@
 PROG            = advent
-CFLAGS          = -g -I../common -Werror #-Wall -O
+CFLAGS          = -g -I../common -Werror -Wall -O
 LDFLAGS         = -g
 OBJ             = act.o indobj.o dark.o freeze.o \
                   inpans.o pct.o tolower.o advent.o \

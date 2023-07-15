@@ -16,7 +16,7 @@ void mes(unsigned iadr)
 {
     static int cb = -1;
     static char buf[blksiz + 1];
-    register char *ptr, *zeroptr, *p;
+    register char *ptr, *zeroptr;
     static long block = -1, nblock, adr;
 
     if (cb == -1) {

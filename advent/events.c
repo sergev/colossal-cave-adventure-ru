@@ -11,15 +11,13 @@ extern FILE *F1;
 
 void events()
 {
-    int actres;
     actfla = 1;
-    actres = act(tevent, 0);
+    act(tevent, 0);
     actfla = 0;
 }
 
 void ini()
 {
-    int actres;
     time_t now;
 
     loadcm();
@@ -33,7 +31,7 @@ void ini()
         loc = 1;
         rndini = rand();
         actfla = 1;
-        actres = act(tiniti, 0);
+        act(tiniti, 0);
         actfla = 0;
     }
     descr();

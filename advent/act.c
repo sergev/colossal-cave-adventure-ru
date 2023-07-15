@@ -16,7 +16,7 @@ int act(int indx, int object)
 {
 #define not 128
 #define isobj 64
-    int ntflag, obflag, condit, obimpl, cmnd, kod, obj, ncarry, i;
+    int ntflag, condit, obimpl, cmnd, kod, obj, ncarry, i;
 
 begin:
     iniget(indx);

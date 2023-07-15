@@ -5,9 +5,8 @@
 
 void to_lower(char *adr, int lgt)
 {
-    register char *oldadr, c;
+    char c;
 
-    oldadr = adr;
     while (lgt--) {
         c = *adr;
         if (c >= 'A' && c <= 'Z')
