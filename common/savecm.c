@@ -10,7 +10,7 @@ FILE *F1;
 void savecm()
 {
     if ((F1 = fopen("common.adv", "wb")) == NULL)
-        fatal();
+        fatal("cannot create 'common.adv'");
     fwrite(_rtext, sizeof _rtext, 1, F1);
     fwrite(_ltext, sizeof _ltext, 1, F1);
     fwrite(_stext, sizeof _stext, 1, F1);
@@ -39,7 +39,7 @@ void loadcm()
 {
     if ((F1 = fopen("common.adv", "rb")) == NULL) {
         if ((F1 = fopen("/usr/local/share/advent/common.adv", "rb")) == NULL)
-            fatal();
+            fatal("cannot open 'common.adv' or '/usr/local/share/advent/common.adv'");
     }
     fread(_rtext, sizeof _rtext, 1, F1);
     fread(_ltext, sizeof _ltext, 1, F1);

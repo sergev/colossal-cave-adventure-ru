@@ -32,7 +32,7 @@ void specia(int n)
     case (10 - 1):
         goto L9;
     }
-    fatal(/*104*/);
+    fatal("bad special");
 
 L1:
     exit(0); /* конец игры */

@@ -51,7 +51,7 @@ void _outt(char byte)
 {
     if (F1 == NULL) { /* открыть файл */
         if ((F1 = fopen("text.adv", "wb")) == NULL)
-            fatal();
+            fatal("cannot create 'text.adv'");
     }
     fwrite(&byte, 1, 1, F1);
     outt = outt + 1;

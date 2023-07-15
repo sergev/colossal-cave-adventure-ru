@@ -11,7 +11,7 @@ void iactio()
     static int aw;
 
     if ((F3 = fopen("advactio", "r")) == NULL)
-        fatal();
+        fatal("cannot open 'advactio'");
     printf("actions words      :");
     while (getlin()) {
         if (line(1) == '+') {
@@ -20,7 +20,7 @@ void iactio()
             while (getwrd()) {
                 if (vocab(_word) >= 0) {
                     printf("\n%s%.4s\n", "дважды определено: ", _word);
-                    fatal();
+                    fatal(__func__);
                 }
                 nvoc = nvoc + 1;
                 ktab(nvoc) = aw + (actnwr * 1000);
@@ -33,7 +33,7 @@ void iactio()
 
         } else {
             printf("\n%s%.10s\n", "ошибка: ", &line(p));
-            fatal();
+            fatal(__func__);
         }
     }
     printf("%8d  %s %6d  %s\n", aw, "of", actw, "used");

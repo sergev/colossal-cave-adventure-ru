@@ -18,7 +18,7 @@ void ivocab()
     static int direct, kword, mm, mark;
 
     if ((F3 = fopen("advvocab", "r")) == NULL)
-        fatal();
+        fatal("cannot open 'advvocab'");
     printf("vocabulary words   :");
     while (getlin()) {
         mark = line(1);
@@ -34,13 +34,13 @@ void ivocab()
                 mesimp = mesimp + 1;
             } else {
                 printf("\n%s%.10s\n", "неверный маркер: ", _line);
-                fatal();
+                fatal(__func__);
             }
             p = 4 /* read list of words */;
             while (getwrd()) {
                 if (vocab(_word) >= 0) {
                     printf("\n%s%.4s\n", "дважды определено: ", _word);
-                    fatal();
+                    fatal(__func__);
                 }
                 nvoc = nvoc + 1;
                 ktab(nvoc) = kword;

@@ -11,7 +11,7 @@ void action(int verb, int object)
 
     kk = actkey(verb);
     if (kk == 0 && verb != 1)
-        fatal(/*102*/);
+        fatal("bad action");
     if (!act(kk, object))
         rspeak(12); /* как применить слово? */
 }
@@ -22,7 +22,7 @@ void motion(int verb)
 
     kk = trvkey(loc);
     if (kk == 0 && loc != 1)
-        fatal(/*103*/);
+        fatal("bad motion");
     if (!act(kk, verb)) {
         if (pct(50)) {
             rspeak(9); /* пути нет */

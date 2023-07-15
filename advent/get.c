@@ -6,8 +6,8 @@
 
 #include "advexter.h"
 
-#define adv_data "data.adv"
-#define adv_data2 "/usr/local/share/advent/data.adv"
+#define DATA_LOCAL_FILENAME "data.adv"
+#define DATA_SHARED_FILENAME "/usr/local/share/advent/data.adv"
 
 static FILE *cb;
 static char *bevents, *pevents;
@@ -15,9 +15,9 @@ static char *bevents, *pevents;
 void iniget(unsigned adr)
 {
     if (cb == NULL) {
-        if ((cb = fopen(adv_data, "rb")) == NULL) {
-            if ((cb = fopen(adv_data2, "rb")) == NULL)
-                fatal();
+        if ((cb = fopen(DATA_LOCAL_FILENAME, "rb")) == NULL) {
+            if ((cb = fopen(DATA_SHARED_FILENAME, "rb")) == NULL)
+                fatal("cannot open '" DATA_LOCAL_FILENAME "' or '" DATA_SHARED_FILENAME "'");
         }
         bevents = (char *)malloc(eevent - tevent + 2);
         fseek(cb, (long)tevent, 0);

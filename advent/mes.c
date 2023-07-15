@@ -8,8 +8,8 @@
 #define blksiz 512
 #define mask (~(blksiz - 1l))
 
-#define adv_text "text.adv"
-#define adv_text2 "\advent\text.dat"
+#define TEXT_LOCAL_FILENAME "text.adv"
+#define TEXT_SHARED_FILENAME "\advent\text.dat"
 #define empty '>'
 
 void mes(unsigned iadr)
@@ -20,9 +20,9 @@ void mes(unsigned iadr)
     static long block = -1, nblock, adr;
 
     if (cb == -1) {
-        if ((cb = open(adv_text, 0)) == -1) {
-            if ((cb = open(adv_text2, 0)) == -1)
-                fatal(/*1*/);
+        if ((cb = open(TEXT_LOCAL_FILENAME, 0)) == -1) {
+            if ((cb = open(TEXT_SHARED_FILENAME, 0)) == -1)
+                fatal("cannot open '" TEXT_LOCAL_FILENAME "' or '" TEXT_SHARED_FILENAME "'");
         }
     }
 

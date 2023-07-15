@@ -31,7 +31,7 @@ int main()
     printf("\n%s\n", "      adventure database initialising");
     printf("---------------------------------------------\n");
     if ((F2 = fopen("data.adv", "wb")) == NULL)
-        fatal();
+        fatal("cannot create 'data.adv'");
 
     /* === обработка входных файлов === */
 

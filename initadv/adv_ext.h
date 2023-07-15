@@ -15,7 +15,6 @@ extern long *rword;                  /* equivalence (word,rword) */
 
 extern FILE *F3;
 
-void fatal(void);
 int scan(void);
 int getwrd(void);
 int getlin(void);

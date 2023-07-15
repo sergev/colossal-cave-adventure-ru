@@ -178,7 +178,7 @@ L5000:
         case (26 - 14):
             goto L112;
         }
-        fatal(/*101*/);
+        fatal("bad action");
 
     L101:
         place(obj) = loc /* drop object here */;

@@ -16,7 +16,7 @@ void iobjec()
     static int mark, object, indstt, posit, indfix;
 
     if ((F3 = fopen("advobjec", "r")) == NULL)
-        fatal();
+        fatal("cannot open 'advobjec'");
     printf("objects description:");
     while (getlin()) {
         mark = line(1);
@@ -27,7 +27,7 @@ void iobjec()
             while (getwrd()) {
                 if (vocab(_word) >= 0) {
                     printf("\n%s%.4s\n", "дважды определено: ", _word);
-                    fatal();
+                    fatal(__func__);
                 }
                 nvoc = nvoc + 1;
                 ktab(nvoc) = object + (objcwr * 1000);
@@ -71,7 +71,7 @@ void iobjec()
 
         } else {
             printf("\n%s%.10s\n", "ошибка: ", &line(p));
-            fatal();
+            fatal(__func__);
         }
     }
     printf("%8d  %s %6d  %s\n", object, "of", objt, "used");

@@ -13,7 +13,7 @@ void iclass()
     static int nmes;
 
     if ((F3 = fopen("advclass", "r")) == NULL)
-        fatal();
+        fatal("cannot open 'advclass'");
     printf("class messages     :");
     while (getlin()) {
         nmes = nmes + 1;

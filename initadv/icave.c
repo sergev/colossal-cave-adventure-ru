@@ -18,7 +18,7 @@ void icave()
     static int lc;
 
     if ((F3 = fopen("advcave", "r")) == NULL)
-        fatal();
+        fatal("cannot open 'advcave'");
     printf("cave locations     :");
     while (getlin()) {
         if (line(1) == '+') {
@@ -27,7 +27,7 @@ void icave()
             if (lc < 0) {
             L999:
                 printf("\n%s%.10s\n", "icave: ошибка: ", &line(p));
-                fatal();
+                fatal(__func__);
             }
             screen(lc);
             if (locused[lc - 1] & locdef) {

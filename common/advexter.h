@@ -82,7 +82,7 @@ extern char _prop[objt]; /* свойство объекта */
 #define prop(x) _prop[(x)-1]
 
 /* From common directory. */
-void fatal(void);
+void fatal(const char *message);
 int vocab(char *word);
 void savecm(void);
 void loadcm(void);

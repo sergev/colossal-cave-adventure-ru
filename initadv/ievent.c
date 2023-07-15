@@ -11,7 +11,7 @@ unsigned dpoint;
 void ievent()
 {
     if ((F3 = fopen("advevent", "r")) == NULL)
-        fatal();
+        fatal("cannot open 'advevent'");
     printf("initial + events   :");
     while (getlin()) {
         if (line(1) == 'i') {
@@ -21,7 +21,7 @@ void ievent()
             eevent = dpoint;
         } else {
             printf("\n%s%.10s\n", "ошибка: ", &line(p));
-            fatal();
+            fatal(__func__);
         }
     }
     printf("%8d   + %6d bytes\n", tevent - tiniti, dpoint - tevent);

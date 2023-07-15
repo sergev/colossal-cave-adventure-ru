@@ -13,7 +13,7 @@ void imessa()
     static int nmes;
 
     if ((F3 = fopen("advmessa", "r")) == NULL)
-        fatal();
+        fatal("cannot open 'advmessa'");
     printf("random messages    :");
     while (getlin()) {
         strncpy(buf, _line, 3);

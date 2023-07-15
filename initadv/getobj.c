@@ -27,7 +27,7 @@ int getobj()
                 _getobj = _getobj % 1000;
             } else {
                 printf("\n%s%.4s\n", "unknown word=", _word);
-                fatal();
+                fatal(__func__);
             }
         }
 
