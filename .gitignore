@@ -1,4 +1,5 @@
 *.o
 *.adv
+*.log
 initadv/initadv
 advent/advent

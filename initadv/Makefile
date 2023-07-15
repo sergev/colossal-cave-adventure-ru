@@ -3,7 +3,8 @@ CFLAGS          = -g -Werror -Wall -O
 LDFLAGS         = -g
 OBJ             = fatal.o getlin.o getobj.o iactio.o icave.o iclass.o \
                   ievent.o imessa.o initadv.o iobjec.o ivocab.o \
-                  putcnd.o putmes.o screen.o stat.o vocab.o savecm.o
+                  putcnd.o putmes.o screen.o stat.o vocab.o savecm.o \
+                  unicode.o
 VPATH = ../common
 
 all:            $(PROG)

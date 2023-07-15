@@ -75,7 +75,7 @@ void condit()
 #define CNDCOD(x) _cndcod[(x)-1]
     static char _cndcod[] = {
         /* === маркеры условий === */
-        'o', /* об"ekt=заданному */
+        'o', /* объект = заданному */
         'a', /* we are at object */
         'h', /* here is object */
         't', /* is toting object */
@@ -96,8 +96,8 @@ void condit()
         'd', /* drop object */
         '*', /* destroy object */
         'c', /* carry object */
-        'm', /* messane #n (  1 <= n < 256 ) */
-        'm', /*    ...     (256 <= n < 512 ) */
+        'm', /* messane #n (  1 <= n < 256) */
+        'm', /*    ...     (256 <= n < 512) */
         'p', /* let PROP(obj)=n */
         'l', /* change location to #n */
         '#', /* special case #n */
@@ -110,7 +110,7 @@ void condit()
 
     while (scan() && LINE(p) != '=') { /* анализ условий */
         mark = LINE(p);
-        p = p + 1; /* ... mapkep */
+        p = p + 1; /* ... маркер */
         for (kod = 1; kod <= NCND; ++kod) {
             if (mark == CNDCOD(kod))
                 goto L10;
@@ -145,7 +145,7 @@ void condit()
                 outd(WORDS(i));
 
         } else { /* стандартное условие */
-            obj = 0 /* ... об"ekt (если есть) */;
+            obj = 0 /* ... объект (если есть) */;
             if (LINE(p) != ' ' && LINE(p) != '=') {
                 obj = getobj();
                 kod = kod + ISOBJ;
@@ -171,7 +171,7 @@ void condit()
     p = p + 1;
     while (scan()) { /* анализ действий */
         mark = LINE(p);
-        p = p + 2 /* ... mapkep */;
+        p = p + 2 /* ... маркер */;
         for (kod = 1; kod <= NACT; ++kod) {
             if (mark == ACTCOD(kod))
                 goto L20;
@@ -179,7 +179,7 @@ void condit()
         goto L999;
     L20:
         obj = number = 0;
-        if (mark == '"') { /* ... сообщение b след.ctp */
+        if (mark == '"') { /* ... сообщение в след.стр */
             if (!getlin())
                 goto L999;
             obj = RANM - mesimp;
@@ -190,7 +190,7 @@ void condit()
             p = INPLEN + 1;
 
         } else {
-            if (LINE(p) != ' ' && LINE(p) != '=') { /* об"ekt */
+            if (LINE(p) != ' ' && LINE(p) != '=') { /* объект */
                 obj = getobj();
                 kod = kod + ISOBJ;
             }

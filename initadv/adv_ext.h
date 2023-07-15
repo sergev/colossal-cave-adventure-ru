@@ -1,14 +1,15 @@
 /* INCLUDE-FILE ДЛЯ ГЕНЕРАТОРА БАЗЫ ДАННЫХ "ADVENTURE" */
 
 #include <stdio.h>
+#include <stdint.h>
 
 #include "../common/advexter.h"
 
-#define INPLEN 81
+#define INPLEN 161
 
 extern int p;
 extern char _line[INPLEN], _word[4]; /* buffer: for input line */
-extern long *rword;                  /* equivalence (word,rword) */
+extern uint32_t *rword;              /* equivalence (word,rword) */
 
 #define LINE(x) _line[(x)-1]
 #define WORD(x) _word[(x)-1]

@@ -7,6 +7,8 @@
 
 void screen(int n)
 {
-    if (isatty(1))
+    if (isatty(1)) {
         printf("%8d\b\b\b\b\b\b\b\b", n);
+        //printf("%8d", n);
+    }
 }

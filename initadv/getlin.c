@@ -5,7 +5,7 @@
 
 #include "adv_ext.h"
 
-long *rword = (long *)_word; /* equivalence (word,rword) */
+uint32_t *rword = (uint32_t *)_word; /* equivalence (word,rword) */
 
 int getlin()
 {
@@ -39,24 +39,32 @@ L2:
 
 int getwrd()
 {
-    register int i, _getwrd, ch, p0;
+    int i;
 
-    _getwrd = 0;
-    if (scan()) {
-        _getwrd = 1;
-        for (i = 4; i--;)
-            WORD(i + 1) = ' ';
-        p0 = p - 1;
-        while (p <= INPLEN) {
-            ch = LINE(p);
-            if (!(ch != ' ' && ch != '=' && ch != ')'))
-                break;
-            if (p - p0 <= 4)
-                WORD(p - p0) = LINE(p);
-            p = p + 1;
-        }
+    if (!scan()) {
+        return 0;
     }
-    return (_getwrd);
+    for (i = 1; i <= 4; i++) {
+        WORD(i) = ' ';
+    }
+    i = 1;
+    while (p <= INPLEN) {
+        int ch = LINE(p);
+        if (ch == ' ' || ch == '=' || ch == ')') {
+            break;
+        }
+        if (is_utf8(ch)) {
+            /* Get second byte of utf-8 encoded character. */
+            p += 1;
+            ch = get_utf8(ch, LINE(p));
+        }
+        if (i <= 4) {
+            WORD(i) = ch;
+            i += 1;
+        }
+        p += 1;
+    }
+    return 1;
 }
 
 /* === scan === */

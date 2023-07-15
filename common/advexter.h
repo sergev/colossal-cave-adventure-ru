@@ -1,4 +1,5 @@
 /* = common blocks for adventure === include file === */
+#include <stdbool.h>
 
 /* - parameters --- current limits: */
 
@@ -110,6 +111,9 @@ void fatal(const char *message);
 int vocab(char *word);
 void savecm(void);
 void loadcm(void);
+bool is_utf8(int ch);
+int get_utf8(int c1, int c2);
+const char *word_utf8(const char w[4]);
 
 /*
  * From advent directory.

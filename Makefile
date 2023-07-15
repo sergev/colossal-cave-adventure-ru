@@ -1,4 +1,4 @@
-SUBDIR          = initadv advent
+SUBDIR          = initadv advent base
 
 all:
 		for d in $(SUBDIR); do $(MAKE) -C $$d all; done

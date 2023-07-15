@@ -19,8 +19,11 @@ void ivocab()
 
     if ((F3 = fopen("advvocab", "r")) == NULL)
         fatal("cannot open 'advvocab'");
+
     printf("vocabulary words   :");
     while (getlin()) {
+        //printf("--- line '%s'\n", &LINE(1));
+
         mark = LINE(1);
         if (mark == 'm') { /* message */
             RTEXT(mm) = putmes();
@@ -38,8 +41,10 @@ void ivocab()
             }
             p = 4 /* read list of words */;
             while (getwrd()) {
+                //printf("--- word '%s'\n", word_utf8(_word));
+
                 if (vocab(_word) >= 0) {
-                    printf("\n%s%.4s\n", "дважды определено: ", _word);
+                    printf("\n%s%.4s\n", "дважды определено: ", word_utf8(_word));
                     fatal(__func__);
                 }
                 nvoc = nvoc + 1;
