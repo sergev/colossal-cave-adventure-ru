@@ -6,6 +6,7 @@
 /* out: getobj = object number, line(p) - next symbol after object */
 /*             = -1 - no more words */
 
+#include <string.h>
 #include "adv_ext.h"
 
 int  getobj() {

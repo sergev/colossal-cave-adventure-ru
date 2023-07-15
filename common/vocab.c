@@ -4,10 +4,10 @@
 /* out: vocab=-1  - слово he найдено */
 /*      vocab     - код слова */
 
+#include <string.h>
 #include "advexter.h"
 
-vocab(word)
-    char *word;
+int vocab(char *word)
 {
     register int _vocab, i;
 
@@ -15,7 +15,8 @@ vocab(word)
     for(;;) {
 	_vocab=ktab(i);
     if( _vocab == 0 ) break;
-	if( !strncmp( &atab(i), word, 4 ) )  return( _vocab );
+	if( !strncmp( (const char*) &atab(i), word, 4 ) )
+            return( _vocab );
 	i=i+1;
     }
     return( -1 );

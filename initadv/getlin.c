@@ -4,9 +4,10 @@
 /*         false - end of file */
 
 #include "adv_ext.h"
+
 long *rword=(long *) _word;                  /* equivalence (word,rword) */
 
-getlin() {
+int getlin() {
     register int c, _getlin;
 
     _getlin=0;
@@ -55,7 +56,7 @@ int  getwrd() {
 /* return: true  - ok,  p - позиция не-пробела */
 /*         false - end of file */
 
-scan() {
+int scan() {
     int _scan;
 
 beg:

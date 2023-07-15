@@ -3,9 +3,10 @@
 /*  format: */
 /*     (number) (message) */
 
+#include <string.h>
 #include "adv_ext.h"
 
-imessa() {
+void imessa() {
     static char buf[4];
     static int nmes;
 

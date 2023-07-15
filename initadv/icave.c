@@ -9,10 +9,11 @@
 #include "adv_ext.h"
 
 char locused[loct];
+
 #define locdef 1
 #define locgo  2
 
-icave() {
+void icave() {
     static int lc;
 
     if( (F3=fopen("advcave","r")) == NULL )  fatal();

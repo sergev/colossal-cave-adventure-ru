@@ -4,18 +4,21 @@
 /* строки разделяются символом 'lf', на конце сообщения - 0. */
 /* return: address of first record of message */
 
+#include <string.h>
 #include "adv_ext.h"
 
 static FILE *F1;
 long outt;
 
-putmes() {
+static void _outt(char byte);
+
+int putmes() {
     static char _mrk[4],_mrk0[4];
 #   define mrk0(x) _mrk0[(x)-1]
 #   define mrk(x)  _mrk[(x)-1]
     static unsigned _putmes;
     static int i, en;
-    long f3pos, ftell();
+    long f3pos;
 
     _putmes = outt/2;
     for(i=1; i<=3; ++i)  mrk0(i)=line(i);
@@ -36,9 +39,7 @@ L9:     for(i=4; i<=en; ++i)  _outt(line(i));
     return( _putmes );
 }
 
-
-_outt(byte)
-    char byte;
+void _outt(char byte)
 {
     if( F1==NULL ) {                   /* открыть файл */
         if( (F1=fopen("text.adv","wb")) == NULL )  fatal();

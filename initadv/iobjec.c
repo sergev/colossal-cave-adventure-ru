@@ -11,7 +11,7 @@
 
 #include "adv_ext.h"
 
-iobjec() {
+void iobjec() {
     static int mark, object, indstt, posit, indfix;
 
     if( (F3=fopen("advobjec","r")) == NULL )  fatal();
@@ -31,8 +31,8 @@ iobjec() {
 	    }
 	    screen(object);
 	    if( treasr>=1 ) {
-		prop(object)=inipro;
-		tally=tally+1;
+		prop(object) = (char) inipro;
+		tally = tally + 1;
 	    }
 
 	} else if( mark=='=' ) {             /* пошли об"екты-сокровища */

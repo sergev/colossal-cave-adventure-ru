@@ -1,5 +1,6 @@
 /* ВЫДАЧА СТАТИСТИКИ ПО ИСПОЛЬЗОВАНИЮ СЛОВАРЯ И ДР. */
 
+#include "adv_ext.h"
 #include "../common/advexter.h"
 
 extern char mesused[];
@@ -11,8 +12,7 @@ extern char locused[];
 
 static char stand_mes[] = {9,12,13,15,16,23,32,40,60,90,98,99,203,0};
 
-
-stat()
+void stat()
 {
     register int i, nm;
     register char *p;

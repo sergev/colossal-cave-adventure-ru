@@ -8,7 +8,7 @@
 
 unsigned dpoint;
 
-ievent() {
+void ievent() {
     if( (F3=fopen("advevent","r")) == NULL )  fatal();
     printf("initial + events   :");
     while(getlin()) {

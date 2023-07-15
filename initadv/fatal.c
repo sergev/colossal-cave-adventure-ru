@@ -3,6 +3,7 @@
  */
 #include <stdlib.h>
 #include <unistd.h>
+#include "adv_ext.h"
 
 void fatal()
 {

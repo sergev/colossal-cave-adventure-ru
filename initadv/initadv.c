@@ -19,15 +19,19 @@
 /* === открывает выходные файлы для tekctob и графа пещеры === */
 
 #include <stdio.h>
-#include "adv_ini.h"
+#include "adv_ext.h"
+
+int p;
+char _line[inplen], _word[4];            /* buffer: for input line */
+FILE *F3;
 FILE *F2;
 
-main()
+int main()
 {
     printf("\n%s\n","      adventure database initialising");
     printf("---------------------------------------------\n");
-    if( (F2=fopen("data.adv","wb")) == NULL )  fatal();
-
+    if( (F2=fopen("data.adv","wb")) == NULL )
+        fatal();
 
 /* === обработка входных файлов === */
 
@@ -47,4 +51,5 @@ main()
 
     savecm();
     printf("---------------------------------------------\n\n");
+    return 0;
 }

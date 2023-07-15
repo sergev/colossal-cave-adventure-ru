@@ -6,7 +6,7 @@
 
 #include "adv_ext.h"
 
-iactio() {
+void iactio() {
     static int aw;
 
     if( (F3=fopen("advactio","r")) == NULL )  fatal();

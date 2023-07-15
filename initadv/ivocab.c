@@ -13,7 +13,7 @@
 
 extern int outt, mesimp;
 
-ivocab() {
+void ivocab() {
     static int direct, kword, mm, mark;
 
     if( (F3=fopen("advvocab","r")) == NULL )  fatal();

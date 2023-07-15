@@ -8,10 +8,13 @@
 extern FILE *F2;
 extern unsigned dpoint;
 
-putcnd() {
+static void condit(void);
+static void outd(char bt);
+
+int putcnd() {
     unsigned _putcnd;
     static char mrk, mrk0;
-    long f3pos, ftell();
+    long f3pos;
 
     _putcnd=dpoint;
     mrk0=line(1);
@@ -31,8 +34,7 @@ putcnd() {
 /* === outd === */
 /* output of one byte into file  "data.adv" */
 
-outd(bt)
-    char bt;
+void outd(char bt)
 {
     fwrite( &bt, 1, 1, F2 );
     dpoint=dpoint+1;
@@ -57,11 +59,12 @@ outd(bt)
 
 int mesimp;
 char mesused[ranm];
+
 extern char locused[];
 #define locdef 1
 #define locgo  2
 
-condit() {
+void condit() {
     static int mark, lp, nwords, kod, i, obj, number;
     static int _words[30];
 #   define words(x) _words[(x)-1]
