@@ -138,7 +138,7 @@ void indobj(void);
 int dark(void);
 void mes(unsigned iadr);
 int here(int object);
-void to_lower(char *adr, int lgt);
+void from_utf8(char *buf, int size);
 void ini(void);
 void events(void);
 void getans(int *word1, int *word2, int *type1, int *type2);

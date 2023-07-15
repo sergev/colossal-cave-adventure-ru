@@ -1,13 +1,10 @@
 PROG            = advent
 CFLAGS          = -g -I../common -Werror -Wall -O
 LDFLAGS         = -g
-OBJ             = act.o indobj.o dark.o freeze.o \
-                  inpans.o pct.o tolower.o advent.o \
-                  descr.o get.o mes.o rspeak.o yes.o \
-                  chnloc.o events.o getans.o motion.o \
-                  score.o conv.o fatal.o mscore.o \
-                  specia.o vocab.o savecm.o trim.o \
-                  unicode.o
+OBJ             = act.o indobj.o dark.o freeze.o inpans.o pct.o advent.o \
+                  descr.o get.o mes.o rspeak.o yes.o chnloc.o events.o \
+                  getans.o motion.o score.o conv.o fatal.o mscore.o specia.o \
+                  vocab.o savecm.o trim.o unicode.o
 
 DESTDIR         = /usr/local/bin
 VPATH           = ../common

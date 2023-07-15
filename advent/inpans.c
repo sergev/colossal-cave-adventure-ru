@@ -18,7 +18,7 @@ void inpans(char *wrd1, char *wrd2)
     buf[80 - 1] = '\n';
     if (!read(0, buf, 80 - 1))
         strcpy(buf, "конец\n");
-    to_lower(buf, 80);
+    from_utf8(buf, 80);
     for (ptr = buf; *ptr == ' ' || *ptr == '\t'; ++ptr)
         ;
     if (*ptr != '\n') {

@@ -75,3 +75,38 @@ const char *word_utf8(const char w[4])
     *p = 0;
     return buf;
 }
+
+/*
+ * Upper case to lower case letter conversion (in internal encoding).
+ */
+static int to_lower(int ch)
+{
+    if (ch >= 'A' && ch <= 'Z')     /* A-Z -> a-z */
+        return ch - 'A' + 'a';
+
+    if (ch >= 0x90 && ch <= 0xaf)   /* А-Я -> а-я */
+        return ch - 0x90 + 0xb0;
+
+    if (ch >= 0x80 && ch <= 0x8f)   /* ЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏ -> ѐёђѓєѕіїјљњћќѝўџ */
+        return ch - 0x80 + 0xd0;
+
+    return ch;
+}
+
+/*
+ * Convert buffer from UTF-8 into internal encoding, in place.
+ * Also translate uppercase letters into lowercase.
+ */
+void from_utf8(char *buf, int size)
+{
+    const char *limit = buf + size;
+    char *to = buf;
+
+    while (buf < limit) {
+        int ch = *buf++;
+        if (is_utf8(ch)) {
+            ch = get_utf8(ch, *buf++);
+        }
+        *to++ = to_lower(ch);
+    }
+}
