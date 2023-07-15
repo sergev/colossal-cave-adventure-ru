@@ -1,3 +1,4 @@
 *.o
+*.adv
 initadv/initadv
 advent/advent
