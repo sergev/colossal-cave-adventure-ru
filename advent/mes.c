@@ -1,5 +1,7 @@
 /* вывод сообщения по заданному адресу */
 
+#include <fcntl.h>
+#include <unistd.h>
 #include "advexter.h"
 
 #define blksiz    512
@@ -9,8 +11,7 @@
 #define adv_text2 "\advent\text.dat"
 #define empty     '>'
 
-mes(iadr)
-    unsigned iadr;
+void mes(unsigned iadr)
 {
     static int cb = -1;
     static char buf[blksiz+1];
@@ -19,7 +20,8 @@ mes(iadr)
 
     if( cb == -1 ) {
         if( (cb = open( adv_text, 0 )) == -1 )  {
-            if( (cb = open( adv_text2, 0 )) == -1 )  fatal(1);
+            if( (cb = open( adv_text2, 0 )) == -1 )
+                fatal(/*1*/);
         }
     }
 

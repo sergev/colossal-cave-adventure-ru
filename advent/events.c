@@ -1,22 +1,23 @@
 /*d* === treat events ===       19.01.85   version   10 */
 
-#include "advexter.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "advexter.h"
 
 extern int actfla;
 extern FILE *F1;
 
-events() {
+void events() {
     int actres;
     actfla=1;
     actres=act(tevent,0);
     actfla=0;
 }
 
-
-ini() {
-    int actres, tim[2];
-    unsigned rand();
+void ini() {
+    int actres;
+    time_t now;
 
     loadcm();
 
@@ -24,7 +25,8 @@ ini() {
         loadfr();
 
     } else {
-        time( tim );  srand( tim[1] );
+        time( &now );
+        srand( now );
         loc=1;
         rndini=rand();
         actfla=1;
@@ -32,5 +34,4 @@ ini() {
         actfla=0;
     }
     descr();
-
 }

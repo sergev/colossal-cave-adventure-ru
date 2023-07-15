@@ -1,5 +1,5 @@
 PROG            = initadv
-CFLAGS          = -g #-Wall -Werror -O
+CFLAGS          = -g -Werror #-Wall -O
 LDFLAGS         = -g
 OBJ             = fatal.o getlin.o getobj.o iactio.o icave.o iclass.o \
                   ievent.o imessa.o initadv.o iobjec.o ivocab.o \

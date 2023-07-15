@@ -1,25 +1,30 @@
 /* выдает сообщение 'n' и ждет ответа yes/no */
 
-yes(x)
-    int x;
+#include <stdio.h>
+#include <stdlib.h>
+#include "advexter.h"
+#include "cyrillic.h"
+
+int yes(int x)
 {
-    char c, c1;
+    int c;
     char s[80];
 
 beg:
     rspeak(x);
 
     for(;;) {
-      gets(s);
+      fgets(s, sizeof(s), stdin);
       trim(s);
 
       if(s[0]==0) goto quit;
 
+      //TODO: get utf8 symbol
       c=s[0];
 
-      if( c == 'y' || c=='Y' || c=='д' || c=='Д' ) {
+      if( c == 'y' || c=='Y' || c==CYRILLIC_SMALL_LETTER_DE || c==CYRILLIC_CAPITAL_LETTER_DE ) {
         x = 1;  break;
-      } else if( c == 'n' || c=='N' || c=='н' || c=='Н' ) {
+      } else if( c == 'n' || c=='N' || c==CYRILLIC_SMALL_LETTER_EN || c==CYRILLIC_CAPITAL_LETTER_EN ) {
         x = 0;  break;
       } else {
         rspeak(40);

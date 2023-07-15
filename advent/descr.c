@@ -2,10 +2,13 @@
 
 #include "advexter.h"
 
-descr()  { ds(0); }
-descr2() { ds(1); }
+static void ds(int n);
 
-ds(n) {
+void descr()  { ds(0); }
+
+void descr2() { ds(1); }
+
+void ds(int n) {
     register int kk;
 
     if( n ) goto L100;

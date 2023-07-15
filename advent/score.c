@@ -2,7 +2,7 @@
 
 #include "advexter.h"
 
-score() {
+void score() {
     int scor, maxsco, obj, i;
 
     scor=maxsco=0;

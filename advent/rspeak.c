@@ -3,8 +3,9 @@
 
 #include "advexter.h"
 
-rspeak(n) {
+void rspeak(int n) {
     register unsigned adr;
-    if( !(adr = rtext(n)) )  fatal(3);
+    if( !(adr = rtext(n)) )
+        fatal(/*3*/);
     mes(adr);
 }

@@ -4,7 +4,7 @@
 
 int moves;
 
-main() {
+int main() {
     int word1, word2, type1, type2;
     int oldob, oldobj;
 
@@ -57,4 +57,5 @@ L20:;
         }
         oldobj=oldob;
     }
+    return 0;
 }

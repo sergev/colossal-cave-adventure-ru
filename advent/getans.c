@@ -3,8 +3,9 @@
 /* out: word1,word2 - найденные по словарю значения слов */
 /*      type1,type2 - их типы (-1 - слова het) */
 
-getans(word1,word2,type1,type2)
-    int *word1, *word2, *type1, *type2;
+#include "advexter.h"
+
+void getans(int *word1, int *word2, int *type1, int *type2)
 {
     int work, kk;
     char _wrd1[10],_wrd2[10];

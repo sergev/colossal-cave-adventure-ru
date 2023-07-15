@@ -1,12 +1,13 @@
 /*d* === freeze ===             19.01.85   version    9 */
 /* freeze game into file 'frozen.adv' */
 
-#include "advexter.h"
 #include <stdio.h>
+#include <unistd.h>
+#include "advexter.h"
 
 extern FILE *F1;
 
-freeze() {
+void freeze() {
     F1=fopen("frozen.adv","wb");
     fwrite( &abb,   sizeof abb,     1, F1);
     fwrite( _abrev, sizeof _abrev,  1, F1);
@@ -20,11 +21,10 @@ freeze() {
     fclose(F1);
 }
 
-
 /* === loadfr === */
 /* load frozen game from file 'adv:frozen' */
 
-loadfr() {
+void loadfr() {
     fread(  &abb,   sizeof abb,     1, F1);
     fread(  _abrev, sizeof _abrev,  1, F1);
     fread(  &loc,   sizeof loc,     1, F1);

@@ -1,10 +1,10 @@
 #include <string.h>
+#include "advexter.h"
 
-trim(s)
-char *s;
+void trim(char *s)
 {
-  int i=0;
-  while((s[i]==' ')||(s[i]=='\t')) i++;
-  strcpy(s,s+i);
+    int i=0;
+    while((s[i]==' ')||(s[i]=='\t'))
+        i++;
+    strcpy(s,s+i);
 }
-

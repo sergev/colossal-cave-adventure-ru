@@ -1,8 +1,9 @@
-/* ПРЕОБРАЗОВАТЕЛЬ БОЛЬШИХ БУКВ В МАЛЕНЬКИЕ */
+/*
+ * Преобразователь больших букв в маленькие.
+ */
+#include "advexter.h"
 
-tolower(adr,lgt)
-    register char *adr;
-    int lgt;
+void to_lower(char *adr, int lgt)
 {
     register char *oldadr, c;
 
@@ -13,6 +14,4 @@ tolower(adr,lgt)
 /*      else if( (c&0300)==0300 )  *adr &= ~040; */
 	++adr;
     }
-
-    return;
 }

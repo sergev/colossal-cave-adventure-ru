@@ -81,6 +81,38 @@ extern char _fixed[fixt]; /* для фиксированных объектов 
 extern char _prop[objt]; /* свойство объекта */
 #define prop(x) _prop[(x)-1]
 
+/* From common directory. */
 void fatal(void);
 int vocab(char *word);
 void savecm(void);
+void loadcm(void);
+
+/* From advent directory. */
+void iniget(unsigned adr);
+int get(void);
+int at(int object);
+int pct(int n);
+int yes(int x);
+void rspeak(int n);
+void chnloc(int newloc);
+void specia(int n);
+void indobj(void);
+int dark(void);
+void mes(unsigned iadr);
+int here(int object);
+void to_lower(char *adr, int lgt);
+void ini(void);
+void events(void);
+void getans(int *word1, int *word2, int *type1, int *type2);
+void motion(int verb);
+void action(int verb, int object);
+void descr(void);
+void descr2(void);
+void trim(char *s);
+void score(void);
+int act(int indx, int object);
+void loadfr(void);
+void inpans(char *wrd1, char *wrd2);
+void mscore(int score, int maxscore);
+char *conv (unsigned value, int length, int radix, char begins);
+void freeze(void);

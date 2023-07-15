@@ -5,19 +5,19 @@
 
 #include "advexter.h"
 
-action(verb,object) {
+void action(int verb, int object) {
     int kk;
 
     kk=actkey(verb);
-    if( kk==0 && verb!=1 )  fatal(102);
+    if( kk==0 && verb!=1 )  fatal(/*102*/);
     if( !act(kk,object) )  rspeak(12); /* kak применить слово? */
 }
 
-motion(verb) {
+void motion(int verb) {
     int kk;
 
     kk=trvkey(loc);
-    if( kk==0 && loc!=1 )  fatal(103);
+    if( kk==0 && loc!=1 )  fatal(/*103*/);
     if( !act(kk,verb) ) {
 	if( pct(50) ) {
 	    rspeak(9);                /* пути het */

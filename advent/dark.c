@@ -7,7 +7,7 @@
 
 int     darkflag1 = 0;
 
-dark() {
+int dark() {
     static int lamp, light;
 
     if( lamp== 0 ) {                       /* инициализация */
@@ -19,8 +19,7 @@ dark() {
     return( !at(light) && (!here(lamp) || prop(lamp)==0) );
 }
 
-
-at(object) {
+int at(int object) {
     int _at, p;
     p = place(object);
     _at=0;
@@ -39,7 +38,6 @@ at(object) {
     return( _at );
 }
 
-
-here(object) {
+int here(int object) {
     return( place(object) == caried || at(object) );
 }

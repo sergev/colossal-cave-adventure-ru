@@ -1,12 +1,13 @@
 /*d* === specia ===           07.01.85   version   13 */
 /* обработка спецслучая #n */
 
+#include <stdlib.h>
 #include "advexter.h"
 
 extern int drkfla;
 extern int darkflag1;
 
-specia(n) {
+void specia(int n) {
     int flag, obj;
 
     switch( n) {
@@ -20,7 +21,7 @@ specia(n) {
 	case (9-1):  goto L8;
 	case (10-1):  goto L9;
     }
-    fatal(104);
+    fatal(/*104*/);
 
 L1: exit(0);                                  /* конец игры */
 

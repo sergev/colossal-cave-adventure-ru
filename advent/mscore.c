@@ -1,11 +1,12 @@
 /* выдает счет и максимальный счет */
 
+#include <unistd.h>
+#include "advexter.h"
+
 extern int moves;
 
-mscore(score,maxscore)
-    int score,maxscore;
+void mscore(int score, int maxscore)
 {
-    char *conv();
     write(1, "     ", 5);
     write(1,  conv(score,5,10,' '), 5);
     write(1, "                   ", 19);

@@ -3,7 +3,7 @@
 
 #include "advexter.h"
 
-indobj() {
+void indobj() {
     int obj, kk, p;
     if( !dark() ) {
 	for(obj=1; obj<=objt; ++obj) {

@@ -11,8 +11,7 @@
 static FILE *cb;
 static char *bevents, *pevents;
 
-iniget(adr)
-    unsigned adr;
+void iniget(unsigned adr)
 {
     if( cb == NULL ) {
         if( (cb = fopen( adv_data, "rb" )) == NULL ) {
@@ -30,7 +29,6 @@ iniget(adr)
         fseek( cb, (long) adr, 0 );
     }
 }
-
 
 int get()
 {

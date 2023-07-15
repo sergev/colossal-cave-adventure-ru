@@ -12,7 +12,7 @@
 
 int actfla;
 
-act(indx,object) {
+int act(int indx, int object) {
 #   define not   128
 #   define isobj 64
     int ntflag, obflag, condit, obimpl, cmnd, kod, obj, ncarry, i;
@@ -134,7 +134,7 @@ L5000:
             case (25-14):  goto L111;
             case (26-14):  goto L112;
         }
-        fatal(101);
+        fatal(/*101*/);
 
 L101:   place(obj)=loc                           /* drop object here */;
         goto L200;

@@ -1,11 +1,12 @@
 /*d* === chnloc ===        07.01.85   version    9 */
 /* изменение позиции ha позицию #newloc */
 
+#include <stdlib.h>
 #include "advexter.h"
 
 int drkfla;
 
-chnloc(newloc) {
+void chnloc(int newloc) {
     static int drkold;
     drkold=dark();
     loc=newloc;

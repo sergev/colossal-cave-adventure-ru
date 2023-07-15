@@ -3,15 +3,16 @@
 	      содержащую преобразованное по данной системе счисления число,
 	      начинающееся спереди символами 'begins' */
 
-char *conv (value, length, radix, begins)
-    register unsigned value;            /* преобразуемое значение */
-    int length;                         /* длина выходного поля */
-    register radix;                     /* основание системы счисления */
-    char begins;                        /* чем дополнить число спереди */
+#include "advexter.h"
+
+char *conv (unsigned value, /* преобразуемое значение */
+            int length,     /* длина выходного поля */
+            int radix,      /* основание системы счисления */
+            char begins)    /* чем дополнить число спереди */
 {
     char *ptr;
     static char buf[16+1];
-    register i;
+    int i;
 
     buf[16]='\000';
     for(i=0; i<16; ++i)  buf[i]=begins;
