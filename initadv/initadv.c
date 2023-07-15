@@ -15,39 +15,38 @@
 /*      advactio   - действия в ответ на различные глаголы */
 /*      advevent   - начальные и случайные действия */
 
-
 /* === открывает выходные файлы для tekctob и графа пещеры === */
 
 #include <stdio.h>
+
 #include "adv_ext.h"
 
 int p;
-char _line[inplen], _word[4];            /* buffer: for input line */
+char _line[inplen], _word[4]; /* buffer: for input line */
 FILE *F3;
 FILE *F2;
 
 int main()
 {
-    printf("\n%s\n","      adventure database initialising");
+    printf("\n%s\n", "      adventure database initialising");
     printf("---------------------------------------------\n");
-    if( (F2=fopen("data.adv","wb")) == NULL )
+    if ((F2 = fopen("data.adv", "wb")) == NULL)
         fatal();
 
-/* === обработка входных файлов === */
+    /* === обработка входных файлов === */
 
-    ivocab();                    /* порядок 1-ых 3-x обязателен ! */
+    ivocab(); /* порядок 1-ых 3-x обязателен ! */
     iobjec();
     iactio();
 
-    iclass();                    /* в любом порядке (но после) */
+    iclass(); /* в любом порядке (но после) */
     icave();
     imessa();
     ievent();
 
     stat();
 
-
-/* === create file adv_common === */
+    /* === create file adv_common === */
 
     savecm();
     printf("---------------------------------------------\n\n");

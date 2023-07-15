@@ -3,7 +3,7 @@
 /* dark()       - b данной точке temho */
 /* at(object)   - здесь находится этот об'ekt */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 int     darkflag1 = 0;
 

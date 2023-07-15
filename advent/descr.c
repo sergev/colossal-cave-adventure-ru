@@ -1,6 +1,6 @@
 /*  === descr === describe current location */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 descr()  { ds(0); }
 descr2() { ds(1); }

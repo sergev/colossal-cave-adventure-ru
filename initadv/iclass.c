@@ -4,20 +4,24 @@
 /*     (number) (message) */
 
 #include <string.h>
+
 #include "adv_ext.h"
 
-void iclass() {
+void iclass()
+{
     static char buf[4];
-    static int  nmes;
+    static int nmes;
 
-    if( (F3=fopen("advclass","r")) == NULL )  fatal();
+    if ((F3 = fopen("advclass", "r")) == NULL)
+        fatal();
     printf("class messages     :");
-    while(getlin()) {
-        nmes=nmes+1;
+    while (getlin()) {
+        nmes = nmes + 1;
         screen(nmes);
-        strncpy(buf,_line,3);  sscanf(buf,"%d",&cval(nmes));
-        ctext(nmes)=putmes();
+        strncpy(buf, _line, 3);
+        sscanf(buf, "%d", &cval(nmes));
+        ctext(nmes) = putmes();
     }
-    printf("%8d  %s %6d  %s\n",nmes,"of",plcl,"used");
+    printf("%8d  %s %6d  %s\n", nmes, "of", plcl, "used");
     fclose(F3);
 }

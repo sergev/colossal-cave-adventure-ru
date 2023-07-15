@@ -8,19 +8,22 @@
 
 unsigned dpoint;
 
-void ievent() {
-    if( (F3=fopen("advevent","r")) == NULL )  fatal();
+void ievent()
+{
+    if ((F3 = fopen("advevent", "r")) == NULL)
+        fatal();
     printf("initial + events   :");
-    while(getlin()) {
-	if( line(1)=='i' ) {
-	    tiniti=putcnd();
-	} else if( line(1)=='e' ) {
-	    tevent=putcnd();
-	    eevent=dpoint;
-	} else {
-	    printf("\n%s%.10s\n","ошибка: ",&line(p));  fatal();
-	}
+    while (getlin()) {
+        if (line(1) == 'i') {
+            tiniti = putcnd();
+        } else if (line(1) == 'e') {
+            tevent = putcnd();
+            eevent = dpoint;
+        } else {
+            printf("\n%s%.10s\n", "ошибка: ", &line(p));
+            fatal();
+        }
     }
-    printf("%8d   + %6d bytes\n", tevent-tiniti, dpoint-tevent);
+    printf("%8d   + %6d bytes\n", tevent - tiniti, dpoint - tevent);
     fclose(F3);
 }

@@ -3,7 +3,7 @@
 /* inp: verb   - глагол движения или действия */
 /*      object - об'ekt (если het to =0) */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 action(verb,object) {
     int kk;

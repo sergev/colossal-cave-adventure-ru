@@ -1,6 +1,6 @@
 /*d* === score === выдача счета игры        07.01.85   version    9 */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 score() {
     int scor, maxsco, obj, i;

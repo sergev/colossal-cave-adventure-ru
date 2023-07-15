@@ -8,7 +8,7 @@
 /*      object - об'ekt для которого проверять условия */
 /* out: true if one of (condition) is satisfied */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 int actfla;
 

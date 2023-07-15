@@ -1,7 +1,7 @@
 /*d* === freeze ===             19.01.85   version    9 */
 /* freeze game into file 'frozen.adv' */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 #include <stdio.h>
 
 extern FILE *F1;
@@ -24,7 +24,7 @@ freeze() {
 /* === loadfr === */
 /* load frozen game from file 'adv:frozen' */
 
-loadfr() { 
+loadfr() {
     fread(  &abb,   sizeof abb,     1, F1);
     fread(  _abrev, sizeof _abrev,  1, F1);
     fread(  &loc,   sizeof loc,     1, F1);

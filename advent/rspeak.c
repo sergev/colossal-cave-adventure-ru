@@ -1,7 +1,7 @@
 /*d* === rspeak ===       07.01.85   version    6 */
 /* print the "random" message #n */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 rspeak(n) {
     register unsigned adr;

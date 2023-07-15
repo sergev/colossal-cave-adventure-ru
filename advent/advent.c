@@ -1,6 +1,6 @@
 /*d* === adventure === head modul == 07.01.85   version   25 */
-
-#include "..\common\advcommo.h"
+
+#include "advexter.h"
 
 int moves;
 

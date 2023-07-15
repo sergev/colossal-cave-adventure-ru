@@ -1,6 +1,6 @@
 /*d* === treat events ===       19.01.85   version   10 */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 #include <stdio.h>
 
 extern int actfla;

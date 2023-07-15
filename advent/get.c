@@ -3,10 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 #define adv_data  "data.adv"
-#define adv_data2 "\advent\data.adv"
+#define adv_data2 "/usr/local/share/advent/data.adv"
 
 static FILE *cb;
 static char *bevents, *pevents;

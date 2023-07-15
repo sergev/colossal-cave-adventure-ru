@@ -1,7 +1,7 @@
 /*d* === chnloc ===        07.01.85   version    9 */
 /* изменение позиции ha позицию #newloc */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 int drkfla;
 

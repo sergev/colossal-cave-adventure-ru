@@ -1,5 +1,0 @@
-system pmodew
-file act, advent, chnloc, conv, dark, descr, events, fatal, freeze, get, getans
-file indobj, inpans, mes, motion, mscore, pct, rspeak, score, specia, tolower
-file yes, vocab, savecm, trim
-name advent.exe

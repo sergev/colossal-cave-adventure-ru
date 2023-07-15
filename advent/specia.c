@@ -1,7 +1,7 @@
 /*d* === specia ===           07.01.85   version   13 */
 /* обработка спецслучая #n */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 extern int drkfla;
 extern int darkflag1;

@@ -1,7 +1,7 @@
 /*d* === indobj ===        07.01.85   version   16 */
 /* indicate objects at this location */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 indobj() {
     int obj, kk, p;

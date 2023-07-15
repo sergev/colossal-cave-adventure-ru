@@ -1,6 +1,6 @@
 /* вывод сообщения по заданному адресу */
 
-#include "..\common\advexter.h"
+#include "advexter.h"
 
 #define blksiz    512
 #define mask      (~(blksiz-1l))

@@ -5,19 +5,21 @@
 /*      vocab     - код слова */
 
 #include <string.h>
+
 #include "advexter.h"
 
 int vocab(char *word)
 {
     register int _vocab, i;
 
-    i=1;
-    for(;;) {
-	_vocab=ktab(i);
-    if( _vocab == 0 ) break;
-	if( !strncmp( (const char*) &atab(i), word, 4 ) )
-            return( _vocab );
-	i=i+1;
+    i = 1;
+    for (;;) {
+        _vocab = ktab(i);
+        if (_vocab == 0)
+            break;
+        if (!strncmp((const char *)&atab(i), word, 4))
+            return (_vocab);
+        i = i + 1;
     }
-    return( -1 );
+    return (-1);
 }
