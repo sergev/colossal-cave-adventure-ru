@@ -9,7 +9,7 @@
 #define MASK (~(BLKSIZ - 1l))
 
 #define TEXT_LOCAL_FILENAME "text.adv"
-#define TEXT_SHARED_FILENAME "\advent\text.dat"
+#define TEXT_SHARED_FILENAME "/usr/local/share/advent/text.adv"
 #define EMPTY '>'
 
 void mes(unsigned iadr)

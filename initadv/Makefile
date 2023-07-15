@@ -12,6 +12,8 @@ all:            $(PROG)
 clean:
 		rm -f *.o $(PROG)
 
+install:
+
 $(PROG):        $(OBJ)
 		$(CC) $(LDFLAGS) $(OBJ) -o $@
 ###

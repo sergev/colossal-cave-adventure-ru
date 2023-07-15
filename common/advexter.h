@@ -105,6 +105,14 @@ extern char _prop[OBJT]; /* свойство объекта */
 #define PROP(x) _prop[(x)-1]
 
 /*
+ * Cyrillic letters in internal encoding.
+ */
+#define CYRILLIC_CAPITAL_LETTER_DE  0x94    /* Д */
+#define CYRILLIC_SMALL_LETTER_DE    0xb4    /* д */
+#define CYRILLIC_CAPITAL_LETTER_EN  0x9d    /* Н */
+#define CYRILLIC_SMALL_LETTER_EN    0xbd    /* н */
+
+/*
  * From common directory.
  */
 void fatal(const char *message);

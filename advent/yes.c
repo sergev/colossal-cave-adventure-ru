@@ -4,7 +4,6 @@
 #include <stdlib.h>
 
 #include "advexter.h"
-#include "cyrillic.h"
 
 int yes(int x)
 {
@@ -21,8 +20,11 @@ beg:
         if (s[0] == 0)
             goto quit;
 
-        // TODO: get utf8 symbol
         c = s[0];
+        if (is_utf8(c)) {
+            // Get utf8 symbol
+            c = get_utf8(c, s[1]);
+        }
 
         if (c == 'y' || c == 'Y' || c == CYRILLIC_SMALL_LETTER_DE ||
             c == CYRILLIC_CAPITAL_LETTER_DE) {

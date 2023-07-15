@@ -6,14 +6,21 @@ OBJ             = act.o indobj.o dark.o freeze.o \
                   descr.o get.o mes.o rspeak.o yes.o \
                   chnloc.o events.o getans.o motion.o \
                   score.o conv.o fatal.o mscore.o \
-                  specia.o vocab.o savecm.o trim.o
+                  specia.o vocab.o savecm.o trim.o \
+                  unicode.o
 
-VPATH = ../common
+DESTDIR         = /usr/local/bin
+VPATH           = ../common
 
 all:            $(PROG)
 
 clean:
 		rm -f *.o $(PROG)
+
+install:        $(DESTDIR)/$(PROG)
+
+$(DESTDIR)/$(PROG): $(PROG)
+		install -c -m 555 $< $@
 
 $(PROG):        $(OBJ)
 		$(CC) $(LDFLAGS) $(OBJ) -o $@
@@ -39,7 +46,7 @@ score.o: score.c ../common/advexter.h
 specia.o: specia.c ../common/advexter.h
 tolower.o: tolower.c ../common/advexter.h
 trim.o: trim.c ../common/advexter.h
-yes.o: yes.c ../common/advexter.h ../common/cyrillic.h
+yes.o: yes.c ../common/advexter.h
 fatal.o: ../common/fatal.c ../common/advexter.h
 savecm.o: ../common/savecm.c ../common/advexter.h
 vocab.o: ../common/vocab.c ../common/advexter.h
