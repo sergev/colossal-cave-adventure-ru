@@ -15,7 +15,7 @@ beg:
 
     for (;;) {
         if (!fgets(s, sizeof(s), stdin))
-            goto quit;
+            exit(0);
         trim(s);
 
         if (s[0] == 0)
