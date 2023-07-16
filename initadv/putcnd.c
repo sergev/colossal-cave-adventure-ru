@@ -15,7 +15,7 @@ int putcnd()
 {
     unsigned _putcnd;
     static char mrk, mrk0;
-    long f3pos;
+    long f3pos = 0;
 
     _putcnd = dpoint;
     mrk0 = LINE(1);
@@ -27,7 +27,8 @@ int putcnd()
         condit();
         f3pos = ftell(F3);
     } while (getlin());
-    fseek(F3, f3pos, 0);
+    if (fseek(F3, f3pos, 0) < 0)
+        fatal("seek failed");
     outd(0);
     return (_putcnd);
 }

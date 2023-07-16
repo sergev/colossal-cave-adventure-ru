@@ -14,7 +14,8 @@ beg:
     rspeak(x);
 
     for (;;) {
-        fgets(s, sizeof(s), stdin);
+        if (!fgets(s, sizeof(s), stdin))
+            goto quit;
         trim(s);
 
         if (s[0] == 0)

@@ -31,7 +31,8 @@ void mes(unsigned iadr)
     if (block != nblock) {
         block = nblock;
         lseek(cb, block, 0);
-        read(cb, buf, BLKSIZ);
+        if (read(cb, buf, BLKSIZ) < 0)
+            fatal("cannot read text block");
     }
 
     ptr = &buf[(unsigned)(adr & (BLKSIZ - 1l))];
@@ -42,10 +43,12 @@ void mes(unsigned iadr)
         for (;;) {
             for (zeroptr = ptr; *zeroptr; ++zeroptr)
                 ;
-            write(1, ptr, zeroptr - ptr);
+            if (write(1, ptr, zeroptr - ptr) < 0)
+                fatal("cannot write text");
             if (zeroptr != &buf[BLKSIZ])
                 break;
-            read(cb, buf, BLKSIZ);
+            if (read(cb, buf, BLKSIZ) < 0)
+                fatal("cannot read text");
             ++block;
             ptr = buf;
         }

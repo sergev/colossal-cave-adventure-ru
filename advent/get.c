@@ -21,7 +21,8 @@ void iniget(unsigned adr)
         }
         bevents = (char *)malloc(eevent - tevent + 2);
         fseek(cb, (long)tevent, 0);
-        fread(bevents, eevent - tevent, 1, cb);
+        if (fread(bevents, eevent - tevent, 1, cb) != 1)
+            fatal(__func__);
     }
 
     if (tevent <= adr && adr < eevent) {
@@ -36,7 +37,8 @@ int get()
 {
     char c;
     if (pevents == NULL) {
-        fread(&c, 1, 1, cb);
+        if (fread(&c, 1, 1, cb) != 1)
+            fatal(__func__);
     } else {
         c = *pevents++;
     }

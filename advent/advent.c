@@ -10,7 +10,7 @@ int moves;
 static void play()
 {
     int word1, word2, type1, type2;
-    int oldob, oldobj;
+    int oldob, oldobj = 0;
 
     for (;;) {
         events(); /* случайные события */

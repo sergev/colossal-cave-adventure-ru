@@ -21,7 +21,7 @@ int putmes()
 
     static unsigned _putmes;
     static int i, en;
-    long f3pos;
+    long f3pos = 0;
 
     _putmes = outt / 2;
     for (i = 1; i <= 3; ++i)

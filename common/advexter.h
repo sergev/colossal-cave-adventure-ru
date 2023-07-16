@@ -116,6 +116,7 @@ extern char _prop[OBJT]; /* свойство объекта */
  * From common directory.
  */
 void fatal(const char *message);
+int die(const char *func, unsigned line);
 int vocab(char *word);
 void savecm(void);
 void loadcm(void);

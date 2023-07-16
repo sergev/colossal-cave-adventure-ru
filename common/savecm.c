@@ -7,31 +7,43 @@
 
 FILE *F1;
 
+static void write_f1(const void *ptr, unsigned size)
+{
+    if (fwrite(ptr, size, 1, F1) != 1)
+        fatal("fwrite failed");
+}
+
+static void read_f1(void *ptr, unsigned size)
+{
+    if (fread(ptr, size, 1, F1) != 1)
+        fatal("fread failed");
+}
+
 void savecm()
 {
     if ((F1 = fopen("common.adv", "wb")) == NULL)
         fatal("cannot create 'common.adv'");
-    fwrite(_rtext, sizeof _rtext, 1, F1);
-    fwrite(_ltext, sizeof _ltext, 1, F1);
-    fwrite(_stext, sizeof _stext, 1, F1);
-    fwrite(_ctext, sizeof _ctext, 1, F1);
-    fwrite(_cval, sizeof _cval, 1, F1);
-    fwrite(_ptext, sizeof _ptext, 1, F1);
-    fwrite(_pstat, sizeof _pstat, 1, F1);
-    fwrite(_trvkey, sizeof _trvkey, 1, F1);
-    fwrite(_actkey, sizeof _actkey, 1, F1);
-    fwrite(&nvoc, sizeof nvoc, 1, F1);
-    fwrite(_ktab, sizeof _ktab, 1, F1);
-    fwrite(_atab, sizeof _atab, 1, F1);
-    fwrite(&tally, sizeof tally, 1, F1);
-    fwrite(&treasr, sizeof treasr, 1, F1);
-    fwrite(_place, sizeof _place, 1, F1);
-    fwrite(_fixed, sizeof _fixed, 1, F1);
-    fwrite(_prop, sizeof _prop, 1, F1);
-    fwrite(&rndini, sizeof rndini, 1, F1);
-    fwrite(&tevent, sizeof tevent, 1, F1);
-    fwrite(&eevent, sizeof eevent, 1, F1);
-    fwrite(&tiniti, sizeof tiniti, 1, F1);
+    write_f1(_rtext, sizeof _rtext);
+    write_f1(_ltext, sizeof _ltext);
+    write_f1(_stext, sizeof _stext);
+    write_f1(_ctext, sizeof _ctext);
+    write_f1(_cval, sizeof _cval);
+    write_f1(_ptext, sizeof _ptext);
+    write_f1(_pstat, sizeof _pstat);
+    write_f1(_trvkey, sizeof _trvkey);
+    write_f1(_actkey, sizeof _actkey);
+    write_f1(&nvoc, sizeof nvoc);
+    write_f1(_ktab, sizeof _ktab);
+    write_f1(_atab, sizeof _atab);
+    write_f1(&tally, sizeof tally);
+    write_f1(&treasr, sizeof treasr);
+    write_f1(_place, sizeof _place);
+    write_f1(_fixed, sizeof _fixed);
+    write_f1(_prop, sizeof _prop);
+    write_f1(&rndini, sizeof rndini);
+    write_f1(&tevent, sizeof tevent);
+    write_f1(&eevent, sizeof eevent);
+    write_f1(&tiniti, sizeof tiniti);
     fclose(F1);
 }
 
@@ -41,27 +53,27 @@ void loadcm()
         if ((F1 = fopen("/usr/local/share/advent/common.adv", "rb")) == NULL)
             fatal("cannot open 'common.adv' or '/usr/local/share/advent/common.adv'");
     }
-    fread(_rtext, sizeof _rtext, 1, F1);
-    fread(_ltext, sizeof _ltext, 1, F1);
-    fread(_stext, sizeof _stext, 1, F1);
-    fread(_ctext, sizeof _ctext, 1, F1);
-    fread(_cval, sizeof _cval, 1, F1);
-    fread(_ptext, sizeof _ptext, 1, F1);
-    fread(_pstat, sizeof _pstat, 1, F1);
-    fread(_trvkey, sizeof _trvkey, 1, F1);
-    fread(_actkey, sizeof _actkey, 1, F1);
-    fread(&nvoc, sizeof nvoc, 1, F1);
-    fread(_ktab, sizeof _ktab, 1, F1);
-    fread(_atab, sizeof _atab, 1, F1);
-    fread(&tally, sizeof tally, 1, F1);
-    fread(&treasr, sizeof treasr, 1, F1);
-    fread(_place, sizeof _place, 1, F1);
-    fread(_fixed, sizeof _fixed, 1, F1);
-    fread(_prop, sizeof _prop, 1, F1);
-    fread(&rndini, sizeof rndini, 1, F1);
-    fread(&tevent, sizeof tevent, 1, F1);
-    fread(&eevent, sizeof eevent, 1, F1);
-    fread(&tiniti, sizeof tiniti, 1, F1);
+    read_f1(_rtext, sizeof _rtext);
+    read_f1(_ltext, sizeof _ltext);
+    read_f1(_stext, sizeof _stext);
+    read_f1(_ctext, sizeof _ctext);
+    read_f1(_cval, sizeof _cval);
+    read_f1(_ptext, sizeof _ptext);
+    read_f1(_pstat, sizeof _pstat);
+    read_f1(_trvkey, sizeof _trvkey);
+    read_f1(_actkey, sizeof _actkey);
+    read_f1(&nvoc, sizeof nvoc);
+    read_f1(_ktab, sizeof _ktab);
+    read_f1(_atab, sizeof _atab);
+    read_f1(&tally, sizeof tally);
+    read_f1(&treasr, sizeof treasr);
+    read_f1(_place, sizeof _place);
+    read_f1(_fixed, sizeof _fixed);
+    read_f1(_prop, sizeof _prop);
+    read_f1(&rndini, sizeof rndini);
+    read_f1(&tevent, sizeof tevent);
+    read_f1(&eevent, sizeof eevent);
+    read_f1(&tiniti, sizeof tiniti);
     fclose(F1);
 }
 
