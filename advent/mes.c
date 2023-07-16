@@ -12,6 +12,17 @@
 #define TEXT_SHARED_FILENAME "/usr/local/share/advent/text.adv"
 #define EMPTY '>'
 
+#define BAUD 2400
+
+static void slow_stdout(const char *buf, unsigned nbytes)
+{
+    while (nbytes-- > 0) {
+        write(1, buf, 1);
+        usleep(1000000 * 10 / BAUD);
+        buf++;
+    }
+}
+
 void mes(unsigned iadr)
 {
     static int cb = -1;
@@ -42,7 +53,7 @@ void mes(unsigned iadr)
         for (;;) {
             for (zeroptr = ptr; *zeroptr; ++zeroptr)
                 ;
-            write(1, ptr, zeroptr - ptr);
+            slow_stdout(ptr, zeroptr - ptr);
             if (zeroptr != &buf[BLKSIZ])
                 break;
             read(cb, buf, BLKSIZ);
