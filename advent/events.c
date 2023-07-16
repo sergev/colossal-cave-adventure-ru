@@ -16,18 +16,21 @@ void events()
     actfla = 0;
 }
 
-void ini()
+void ini(unsigned long seed)
 {
-    time_t now;
-
     loadcm();
 
     if ((F1 = fopen("frozen.adv", "rb")) != NULL) {
         loadfr();
 
     } else {
-        time(&now);
-        srand(now);
+        if (seed == 0) {
+            time_t now;
+            time(&now);
+            srand(now);
+        } else {
+            srand(seed);
+        }
         loc = 1;
         rndini = rand();
         actfla = 1;

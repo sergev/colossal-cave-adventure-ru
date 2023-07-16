@@ -139,7 +139,7 @@ int dark(void);
 void mes(unsigned iadr);
 int here(int object);
 void from_utf8(char *buf, int size);
-void ini(void);
+void ini(unsigned long seed);
 void events(void);
 void getans(int *word1, int *word2, int *type1, int *type2);
 void motion(int verb);

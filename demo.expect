@@ -1,0 +1,44 @@
+#!/usr/bin/expect -f
+#
+# Play game The Collossal Cave Adventure.
+#
+set timeout -1
+
+# Remove previously saved game, if any.
+system rm -f frozen.adv
+
+# Start the game with fixed seed, to make it predictable.
+spawn advent --seed 123
+match_max 100000
+
+# Ask for instructions.
+expect "инструкции?"
+send "    да\r"
+expect "по оврагу."
+
+# Get additional information.
+send "    инфо\r"
+expect "об этом."
+
+# Explore the house.
+send "    дом\r"
+expect "с водой."
+send "    взять лампу\r"
+expect "Готово!"
+send "    взять ключи\r"
+expect "Готово!"
+send "    взять еду\r"
+expect "Готово!"
+send "    взять бутылку\r"
+expect "Готово!"
+
+send "    выход\r"
+expect "у конца дороги."
+
+#TODO
+
+# Exit without saving.
+send "    конец\r"
+expect "сдаться?"
+send "    да\r"
+expect eof
