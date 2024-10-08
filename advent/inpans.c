@@ -16,6 +16,7 @@ void inpans(char *wrd1, char *wrd2)
     for (i = 10; i--;)
         wrd1[i] = wrd2[i] = ' ';
     buf[80 - 1] = '\n';
+    write(0, "> ", 2);
     if (!read(0, buf, 80 - 1))
         strcpy(buf, "конец\n");
     from_utf8(buf, 80);
