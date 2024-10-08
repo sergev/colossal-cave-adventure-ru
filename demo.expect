@@ -13,32 +13,23 @@ match_max 100000
 
 # Ask for instructions.
 expect "инструкции?"
-send "    да\r"
-expect "по оврагу."
+send "да\r"
 
 # Get additional information.
-send "    инфо\r"
-expect "об этом."
+expect "> "; send "инфо\r"
 
 # Explore the house.
-send "    дом\r"
-expect "с водой."
-send "    взять лампу\r"
-expect "Готово!"
-send "    взять ключи\r"
-expect "Готово!"
-send "    взять еду\r"
-expect "Готово!"
-send "    взять бутылку\r"
-expect "Готово!"
-
-send "    выход\r"
-expect "у конца дороги."
+expect "> "; send "дом\r"
+expect "> "; send "взять лампу\r"
+expect "> "; send "взять ключи\r"
+expect "> "; send "взять еду\r"
+expect "> "; send "взять бутылку\r"
+expect "> "; send "выход\r"
 
 #TODO
 
 # Exit without saving.
-send "    конец\r"
+expect "> "; send "конец\r"
 expect "сдаться?"
-send "    да\r"
+send "да\r"
 expect eof
