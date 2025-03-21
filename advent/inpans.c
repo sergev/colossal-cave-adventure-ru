@@ -3,6 +3,7 @@
  * char wrd1[10], wrd2[10];  inpans(&wrd1, &wrd2);
  */
 #include <string.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #include "advexter.h"
@@ -16,7 +17,8 @@ void inpans(char *wrd1, char *wrd2)
     for (i = 10; i--;)
         wrd1[i] = wrd2[i] = ' ';
     buf[80 - 1] = '\n';
-    write(0, "> ", 2);
+    if (write(1, "> ", 2) < 0)
+        exit(1);
     if (!read(0, buf, 80 - 1))
         strcpy(buf, "конец\n");
     from_utf8(buf, 80);
